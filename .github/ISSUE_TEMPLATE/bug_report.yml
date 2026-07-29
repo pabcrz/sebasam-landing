@@ -1,0 +1,87 @@
+name: Bug report
+description: Report a reproducible problem with the public SEBASAM landing site.
+title: "fix: "
+labels:
+  - bug
+  - status:needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. A maintainer must add `status:approved` before implementation begins.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I removed secrets, private customer data, and other sensitive information.
+          required: true
+        - label: I understand this issue must be approved before a pull request is opened.
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: Explain the problem and its impact on visitors or maintainers.
+      placeholder: The contact action does not open the expected destination...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal, numbered sequence that consistently shows the problem.
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Affected page or URL
+      placeholder: https://sebasam.online/info
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      description: Include browser version, operating system, and device or viewport when relevant.
+      placeholder: Safari 18 on iPhone 15, iOS 18
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or logs
+      description: Add sanitized evidence that helps reproduce or diagnose the issue.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Include frequency, workarounds, regressions, or accessibility impact.
