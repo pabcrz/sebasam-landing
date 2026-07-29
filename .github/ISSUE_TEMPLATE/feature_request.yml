@@ -1,0 +1,85 @@
+name: Feature request
+description: Propose an improvement to the public SEBASAM landing site or its maintenance workflow.
+title: "feat: "
+labels:
+  - enhancement
+  - status:needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the visitor or maintainer problem before proposing implementation. A maintainer must add `status:approved` before work begins.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: This request does not include secrets, private customer data, or unverified business claims.
+          required: true
+        - label: I understand this issue must be approved before a pull request is opened.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What visitor or maintainer need is not being met?
+      placeholder: Visitors cannot easily...
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the observable result, not only a preferred technology.
+      placeholder: Visitors should be able to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Explain how the experience could work while preserving Astro's static-first architecture.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Content and business information
+        - Astro pages and components
+        - Native CSS and visual design
+        - Accessibility
+        - SEO and structured data
+        - Performance and assets
+        - Build, deployment, or tooling
+        - Documentation and collaboration workflow
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe current workarounds or simpler approaches considered.
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Suggested acceptance criteria
+      description: List objective outcomes that would make this request complete and verifiable.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add sanitized references, mockups, examples, or constraints.
