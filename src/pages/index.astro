@@ -1,17 +1,457 @@
 ---
-
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>SEBASAM — Servicio y refacciones para suspensiones de aire y muelles</title>
+    <meta name="description" content="SEBASAM. Servicio y refacciones para suspensiones de aire y muelles. Próximamente." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg-orbs">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="orb orb-c"></div>
+      </div>
+      <div class="bg-grain"></div>
+    </div>
+
+    <main class="hero">
+      <div class="container">
+        <h1 class="brand" aria-label="SEBASAM">
+          <span class="char" style="--i:0">S</span
+          ><span class="char" style="--i:1">E</span
+          ><span class="char" style="--i:2">B</span
+          ><span class="char" style="--i:3">A</span
+          ><span class="char" style="--i:4">S</span
+          ><span class="char" style="--i:5">A</span
+          ><span class="char" style="--i:6">M</span>
+        </h1>
+        <p class="descriptor">Servicio y refacciones para suspensiones de aire y muelles</p>
+
+        <div class="logo-stage" aria-hidden="true">
+          <div class="logo-burst"></div>
+          <picture>
+            <source srcset="/brand/sebasam-logo-dark.png" media="(prefers-color-scheme: dark)" />
+            <img
+              class="logo"
+              src="/brand/sebasam-logo-light.png"
+              alt="SEBASAM — Servicio y refacciones para suspensiones de aire y muelles"
+              width="320"
+              height="320"
+            />
+          </picture>
+        </div>
+
+        
+
+        <div class="typewriter" aria-live="polite" aria-label="Mensajes de SEBASAM">
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+
+        <div class="footer-row">
+          <span class="sub">Próximamente</span>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      :root {
+        --navy-950: #000814;
+        --navy-900: #001024;
+        --navy-800: #001b3f;
+        --navy-700: #002b68;
+        --primary: #004aad;
+        --primary-bright: #0059cc;
+        --primary-glow: #3b82f6;
+        --on-dark: #ffffff;
+        --on-dark-muted: #cbd5e1;
+        --font-sans: "Inter", system-ui, sans-serif;
+        --font-mono: "DM Mono", ui-monospace, monospace;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color-scheme: dark;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--navy-950);
+        color: var(--on-dark);
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* ══════════════════════════════════════════
+         BACKGROUND
+         ══════════════════════════════════════════ */
+
+      .bg-layer {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .bg-orbs {
+        position: absolute;
+        inset: 0;
+        filter: blur(100px);
+      }
+
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .orb-a {
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+        top: -20%;
+        left: -15%;
+        opacity: 0.55;
+        animation: drift-a 16s ease-in-out infinite;
+      }
+
+      .orb-b {
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, var(--primary-glow) 0%, var(--navy-700) 50%, transparent 75%);
+        bottom: -25%;
+        right: -10%;
+        opacity: 0.45;
+        animation: drift-b 20s ease-in-out infinite;
+      }
+
+      .orb-c {
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, var(--navy-700) 0%, transparent 70%);
+        top: 40%;
+        left: 30%;
+        opacity: 0.30;
+        animation: drift-c 22s ease-in-out infinite;
+      }
+
+      @keyframes drift-a {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33%      { transform: translate(8%, -5%) scale(1.15); }
+        66%      { transform: translate(-3%, 6%) scale(0.9); }
+      }
+
+      @keyframes drift-b {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33%      { transform: translate(-6%, -4%) scale(1.1); }
+        66%      { transform: translate(5%, 3%) scale(0.92); }
+      }
+
+      @keyframes drift-c {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50%      { transform: translate(-5%, 5%) scale(1.2); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .orb { animation: none; }
+      }
+
+      /* subtle grain overlay */
+
+      .bg-grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 256px 256px;
+      }
+
+      /* ══════════════════════════════════════════
+         LAYOUT
+         ══════════════════════════════════════════ */
+
+      .hero {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+      }
+
+      .container {
+        position: relative;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      /* ══════════════════════════════════════════
+         LOGO + BURST
+         ══════════════════════════════════════════ */
+
+      .logo-stage {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      .logo-burst {
+        position: absolute;
+        inset: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 74, 173, 0.22) 0%,
+          rgba(0, 74, 173, 0.08) 30%,
+          rgba(0, 43, 104, 0.04) 55%,
+          transparent 72%
+        );
+        pointer-events: none;
+        z-index: 0;
+        animation: burst-breathe 4s ease-in-out infinite;
+      }
+
+      @keyframes burst-breathe {
+        0%, 100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.75;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.25);
+          opacity: 1;
+        }
+      }
+
+      @media (min-width: 480px) {
+        .logo-burst { width: 420px; height: 420px; }
+      }
+
+      @media (min-width: 640px) {
+        .logo-burst { width: 560px; height: 560px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .logo-burst { animation: none; opacity: 0.85; }
+      }
+
+      /* ══════════════════════════════════════════
+         LOGO IMAGE
+         ══════════════════════════════════════════ */
+
+      .logo {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        object-fit: contain;
+        z-index: 1;
+        filter: drop-shadow(0 0 30px rgba(0, 74, 173, 0.35));
+      }
+
+      @media (min-width: 480px) {
+        .logo { width: 220px; height: 220px; }
+      }
+
+      @media (min-width: 640px) {
+        .logo { width: 280px; height: 280px; }
+      }
+
+      /* ══════════════════════════════════════════
+         BRAND
+         ══════════════════════════════════════════ */
+
+      .brand {
+        position: relative;
+        font-size: clamp(2.8rem, 9vw, 5.5rem);
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        color: var(--on-dark);
+        line-height: 1.05;
+        z-index: 1;
+        display: flex;
+        gap: 0;
+        text-shadow: 0 0 40px rgba(0, 74, 173, 0.15);
+      }
+
+      .char {
+        display: inline-block;
+      }
+
+      /* ══════════════════════════════════════════
+         DESCRIPTOR
+         ══════════════════════════════════════════ */
+
+      .descriptor {
+        font-family: var(--font-mono);
+        font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--on-dark-muted);
+        opacity: 0.6;
+        max-width: 420px;
+        line-height: 1.6;
+        z-index: 1;
+      }
+
+      /* ══════════════════════════════════════════
+         TYPEWRITER
+         ══════════════════════════════════════════ */
+
+      .typewriter {
+        position: relative;
+        font-family: var(--font-mono);
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        color: var(--on-dark-muted);
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.125rem;
+        z-index: 1;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 0.125rem;
+        height: 1.2em;
+        background: #06b6d4;
+        animation: blink 0.75s step-end infinite;
+        vertical-align: middle;
+        border-radius: 2px;
+        box-shadow: 0 0 6px #06b6d4;
+      }
+
+      @keyframes blink {
+        50% { background: transparent; box-shadow: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cursor { animation: none; }
+      }
+
+      /* ══════════════════════════════════════════
+         FOOTER ROW
+         ══════════════════════════════════════════ */
+
+      .footer-row {
+        z-index: 1;
+      }
+
+      .sub {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--on-dark-muted);
+        opacity: 0.5;
+      }
+    </style>
+
+    <script>
+      const phrases = [
+        "Cuidamos tu unidad.",
+        "Cuidamos tu bolsillo.",
+        "Damos soluciones.",
+        "No somos cambiapiezas.",
+        "Antes confianza que tranza.",
+      ];
+
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const container = document.querySelector(".typewriter");
+      const cursor = container.querySelector(".cursor");
+
+      if (prefersReducedMotion) {
+        const span = document.createElement("span");
+        span.textContent = "Cuidamos tu unidad.";
+        cursor.before(span);
+        cursor.remove();
+      } else {
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let timeoutId;
+
+        const textSpan = document.createElement("span");
+        cursor.before(textSpan);
+
+        function type() {
+          const current = phrases[phraseIndex];
+          const speed = isDeleting ? 28 : 45 + Math.random() * 30;
+          const pauseBeforeDelete = 2400;
+          const pauseBeforeNext = 500;
+
+          if (!isDeleting) {
+            textSpan.textContent = current.slice(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === current.length) {
+              timeoutId = setTimeout(() => { isDeleting = true; type(); }, pauseBeforeDelete);
+              return;
+            }
+          } else {
+            textSpan.textContent = current.slice(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+              isDeleting = false;
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+              timeoutId = setTimeout(type, pauseBeforeNext);
+              return;
+            }
+          }
+          timeoutId = setTimeout(type, speed);
+        }
+
+        type();
+
+        window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener(
+          "change",
+          (e) => {
+            if (e.matches) {
+              clearTimeout(timeoutId);
+              textSpan.textContent = phrases[phraseIndex];
+              cursor.remove();
+            }
+          }
+        );
+      }
+    </script>
+  </body>
 </html>
