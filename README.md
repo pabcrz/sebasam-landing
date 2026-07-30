@@ -52,6 +52,16 @@ El servidor local inicia en `http://localhost:4321`.
 | `pnpm preview` | Sirve localmente el build de producción. |
 | `pnpm astro check` | Verifica tipos y componentes Astro. |
 
+## Colaboración
+
+El trabajo se organiza mediante issues aprobados y ramas enfocadas. Antes de contribuir, consultar:
+
+- [`AGENTS.md`](AGENTS.md) para las reglas no negociables de agentes y asistentes.
+- [`docs/AI_WORKFLOW.md`](docs/AI_WORKFLOW.md) para el flujo canónico de implementación y verificación.
+- [`docs/GITFLOW.md`](docs/GITFLOW.md) para ramas, pull requests, releases y hotfixes.
+
+Cada pull request debe cerrar un issue aprobado mediante `Closes #N`, incluir exactamente una etiqueta `type:*` y mantener fuera del repositorio público cualquier secreto, dato privado o ruta personal de máquina.
+
 ## Identidad de marca
 
 ### Nombre principal
@@ -235,6 +245,37 @@ Esta fuente debe contener:
 
 En una versión futura puede sustituirse por una API, CMS o integración con la aplicación operativa. Eso queda fuera de la primera versión.
 
+## Arquitectura de implementación
+
+La primera versión debe mantenerse estática y reutilizar contenido y presentación mediante componentes Astro:
+
+```text
+src/
+├── components/
+│   ├── BusinessHours.astro
+│   ├── ContactActions.astro
+│   ├── Footer.astro
+│   └── Header.astro
+├── content/
+│   └── business.ts
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/
+│   ├── index.astro
+│   └── info.astro
+└── styles/
+    ├── global.css
+    └── tokens.css
+```
+
+Reglas de implementación:
+
+- `business.ts` es la única fuente para datos comerciales compartidos.
+- `BaseLayout.astro` centraliza idioma, metadata, favicons, canonical y estructura base.
+- `/` y `/info` reutilizan acciones de contacto, horarios y footer; no duplican teléfonos, dirección ni enlaces.
+- La salida es HTML estático por defecto. Agregar JavaScript cliente únicamente cuando una interacción no pueda resolverse con HTML y CSS.
+- La landing no consulta Supabase ni depende de la aplicación operativa en v1.
+
 ## Dirección visual
 
 ### Principios
@@ -315,6 +356,50 @@ No implementar esta transición en la primera versión si compromete rendimiento
 - Información estructurada de negocio local cuando la información esté confirmada.
 - Nombre, dirección y teléfonos consistentes en todas las páginas.
 - Sitemap y robots.txt.
+
+### Datos estructurados
+
+Agregar JSON-LD de Schema.org con un tipo compatible con taller automotriz, preferentemente `AutoRepair`, usando los mismos datos de `business.ts`:
+
+- nombre y descriptor;
+- teléfonos;
+- dirección postal;
+- horarios;
+- URL canónica;
+- enlace de Google Maps.
+
+No publicar precios, inventario, calificaciones ni áreas de servicio que no estén confirmadas.
+
+## Activos necesarios
+
+Antes de publicar v1 deben existir activos web optimizados:
+
+- [ ] Logo completo en SVG.
+- [ ] Símbolo compacto en SVG.
+- [ ] Favicon de alto contraste.
+- [ ] Apple touch icon.
+- [ ] Fotografía horizontal real para el hero.
+- [ ] Fotografías reales de trabajos, unidades o refacciones.
+- [ ] Imagen Open Graph de `1200 × 630` px.
+
+Cada imagen debe tener una versión responsiva, dimensiones explícitas y texto alternativo cuando aporte información. Las imágenes decorativas deben usar `alt=""`.
+
+## Verificación automatizada
+
+La entrega mínima debe ejecutar:
+
+```bash
+pnpm astro check
+pnpm build
+```
+
+Además, las pruebas o verificaciones de contenido deben confirmar:
+
+- `/` y `/info` se generan en el build estático;
+- ambas rutas consumen `business.ts`;
+- WhatsApp, teléfonos y Maps usan enlaces válidos;
+- la metadata y canonical son distintas por ruta;
+- no existen dependencias de Supabase, CMS o APIs en v1.
 
 ## Alcance de la primera versión
 
