@@ -1,0 +1,71 @@
+---
+import { business } from '../content/business';
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <div>
+      <a class="footer-brand" href="/" aria-label="Inicio de SEBASAM">
+        <img src="/brand/sebasam-logo-dark.png" alt={business.brand} width="120" height="120" />
+      </a>
+      <p>{business.descriptor}</p>
+    </div>
+    <div class="footer-meta">
+      <a href={business.contacts.whatsapp.href}>{business.contacts.whatsapp.label}</a>
+      <a href={business.contacts.phone.href}>{business.contacts.phone.label}</a>
+      <a href={business.contacts.maps.href}>{business.address.locality}, {business.address.region}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 2rem 0;
+    background: var(--color-navy-900);
+    color: var(--color-white);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .footer-brand img {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+  }
+
+  p {
+    max-width: 360px;
+    margin: 0.25rem 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
+  }
+
+  .footer-meta {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .footer-meta a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.84);
+    font-weight: 700;
+  }
+
+  @media (min-width: 720px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+  }
+</style>

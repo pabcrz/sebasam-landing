@@ -1,0 +1,106 @@
+---
+import { business } from '../content/business';
+
+interface Props {
+  compact?: boolean;
+  mapsLabel?: string;
+}
+
+const { compact = false, mapsLabel = business.contacts.maps.label } = Astro.props;
+---
+
+<div class:list={['contact-actions', { 'contact-actions--compact': compact }]}>
+  <a class="action action--primary" href={business.contacts.whatsapp.href} aria-label={business.contacts.whatsapp.ariaLabel}>
+    <span>WhatsApp</span>
+    <strong>{business.contacts.whatsapp.label}</strong>
+  </a>
+  <a class="action" href={business.contacts.phone.href} aria-label={business.contacts.phone.ariaLabel}>
+    <span>Llamar</span>
+    <strong>{business.contacts.phone.label}</strong>
+  </a>
+  <a class="action" href={business.contacts.maps.href} aria-label={business.contacts.maps.ariaLabel}>
+    <span>Maps</span>
+    <strong>{mapsLabel}</strong>
+  </a>
+</div>
+
+<style>
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .action {
+    display: inline-flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(0, 74, 173, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--color-navy-900);
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  }
+
+  .action span {
+    color: var(--color-slate-600);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .action strong {
+    font-weight: 800;
+  }
+
+  .action:hover {
+    border-color: rgba(0, 74, 173, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .action--primary {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--color-blue-600), var(--color-navy-700));
+    color: var(--color-white);
+    box-shadow: var(--shadow-action);
+  }
+
+  .action--primary span {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .contact-actions--compact {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-actions--compact .action {
+    justify-content: space-between;
+    width: 100%;
+    border-radius: var(--radius-md);
+    padding-inline: 1rem;
+  }
+
+  @media (max-width: 520px) {
+    .contact-actions:not(.contact-actions--compact) {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .contact-actions:not(.contact-actions--compact) .action {
+      width: 100%;
+      justify-content: space-between;
+      border-radius: var(--radius-md);
+    }
+  }
+</style>
