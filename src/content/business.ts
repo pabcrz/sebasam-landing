@@ -73,11 +73,50 @@ export const business = {
 } as const;
 
 export const navigation = [
+  { label: 'Muelles', href: '/muelles' },
   { label: 'Servicios', href: '/#servicios' },
   { label: 'Unidades', href: '/#unidades' },
   { label: 'Refacciones', href: '/#refacciones' },
   { label: 'Contacto', href: '/#contacto' },
 ] as const;
+
+export const muelles = {
+  title: 'Servicio de Muelles en CDMX | SEBASAM',
+  description:
+    'Servicio de muelles para camionetas, camiones y remolques en Iztapalapa, CDMX. Brio a muelles, refuerzos, soldadura y refacciones. SEBASAM, 30 años de experiencia.',
+  intro:
+    'Los muelles son el corazón de la suspensión: sostienen la carga, absorben el golpe y definen cómo se comporta la unidad. Los revisamos, enderezamos, reforzamos o cambiamos según el caso, con criterio y explicando cada opción antes de tocar nada.',
+  includes: [
+    'Brio a muelles',
+    'Refuerzos de muelles',
+    'Soldadura de hojas',
+    'Abrazaderas y pernos de muelle',
+    'Bujes, perchas y columpios',
+    'Cambio de muelle completo',
+  ],
+  faqs: [
+    {
+      question: '¿Qué es un muelle y por qué se desgasta?',
+      answer:
+        'El muelle es el conjunto de hojas de acero que sostiene la carga de la unidad. Con el uso pierde tensión, se dobla o se rompe, y eso se nota en el andar, la altura y el desgaste de llantas.',
+    },
+    {
+      question: '¿Cada cuánto conviene revisar los muelles?',
+      answer:
+        'Depende del uso y la carga. En unidades de trabajo conviene revisarlos en cada servicio programado; si notás altura baja, golpes o inestabilidad, acercate antes.',
+    },
+    {
+      question: '¿Trabajan muelles de camionetas, camiones y remolques?',
+      answer:
+        'Sí. Atendemos desde pickups y camionetas de trabajo hasta camiones ligeros y medianos, rabones, tortones, tractocamiones y remolques.',
+    },
+    {
+      question: '¿Cómo pido una cotización?',
+      answer:
+        'Mandá un mensaje por WhatsApp con el modelo de tu unidad y lo que necesitás. Revisamos el caso, explicamos las opciones y coordinamos la visita al taller.',
+    },
+  ],
+} as const;
 
 export function routeUrl(pathname = '/') {
   return new URL(pathname, business.url).toString();
@@ -106,6 +145,48 @@ export function autoRepairJsonLd(pathname = '/') {
       opens: item.opens,
       closes: item.closes,
     })),
+    keywords: [
+      'muelles',
+      'servicio de muelles',
+      'suspensión de aire',
+      'refacciones de muelles',
+      'muelles sebasam',
+      'muelles sebas',
+    ],
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Servicio de muelles',
+          url: routeUrl('/muelles'),
+        },
+      },
+    ],
     sameAs: [business.contacts.maps.href],
+  };
+}
+
+export function muellesServiceJsonLd(pathname = '/muelles') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${routeUrl('/muelles')}#service`,
+    name: 'Servicio de muelles',
+    serviceType: 'Servicio de muelles',
+    description: muelles.intro,
+    provider: { '@id': `${routeUrl('/')}#business` },
+    areaServed: {
+      '@type': 'City',
+      name: 'Ciudad de México',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Servicios de muelles',
+      itemListElement: muelles.includes.map((item) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: item },
+      })),
+    },
   };
 }
