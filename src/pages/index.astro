@@ -1,457 +1,654 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ContactActions from "../components/ContactActions.astro";
+import BusinessHours from "../components/BusinessHours.astro";
+import { autoRepairJsonLd, business } from "../content/business";
+
+const title =
+  "SEBASAM | Suspensiones de aire, muelles y refacciones en Iztapalapa";
+const description =
+  "Servicio y refacciones para suspensiones de aire y muelles. Contacta a SEBASAM por WhatsApp, teléfono o Google Maps.";
+
+const heroPhrases = [
+  "cuidando tu unidad.",
+  "generando confianza.",
+  "cuidando tu bolsillo.",
+] as const;
+
+const vehicleIcons = [
+  "M5 15h18l-2-5h-3l-2-4H9l-2 4H4l1 5Zm2.5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z",
+  "M4 9h11l4 5h1v4h-2.5a2 2 0 0 0-4 0h-5a2 2 0 0 0-4 0H3v-7a2 2 0 0 1 1-2Zm12 1v4h2.2L15 10h1Z",
+  "M3 8h13v8H3V8Zm13 3h3l2 3v2h-5v-5ZM6 16a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm11 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z",
+  "M3 10h9v6H3v-6Zm9 2h4l2 3h3v1h-9v-4ZM6 16a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z",
+  "M5 6h14v4H5V6Zm0 6h14v6H5v-6Zm3 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z",
+] as const;
+
+const vehicleCategories = business.vehicles.map((vehicle, index) => ({
+  label: vehicle,
+  icon: vehicleIcons[index] ?? vehicleIcons[0],
+}));
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <title>SEBASAM — Servicio y refacciones para suspensiones de aire y muelles</title>
-    <meta name="description" content="SEBASAM. Servicio y refacciones para suspensiones de aire y muelles. Próximamente." />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="bg-layer" aria-hidden="true">
-      <div class="bg-orbs">
-        <div class="orb orb-a"></div>
-        <div class="orb orb-b"></div>
-        <div class="orb orb-c"></div>
-      </div>
-      <div class="bg-grain"></div>
-    </div>
-
-    <main class="hero">
-      <div class="container">
-        <h1 class="brand" aria-label="SEBASAM">
-          <span class="char" style="--i:0">S</span
-          ><span class="char" style="--i:1">E</span
-          ><span class="char" style="--i:2">B</span
-          ><span class="char" style="--i:3">A</span
-          ><span class="char" style="--i:4">S</span
-          ><span class="char" style="--i:5">A</span
-          ><span class="char" style="--i:6">M</span>
-        </h1>
-        <p class="descriptor">Servicio y refacciones para suspensiones de aire y muelles</p>
-
-        <div class="logo-stage" aria-hidden="true">
-          <div class="logo-burst"></div>
-          <picture>
-            <source srcset="/brand/sebasam-logo-dark.png" media="(prefers-color-scheme: dark)" />
-            <img
-              class="logo"
-              src="/brand/sebasam-logo-light.png"
-              alt="SEBASAM — Servicio y refacciones para suspensiones de aire y muelles"
-              width="320"
-              height="320"
-            />
-          </picture>
-        </div>
-
-        
-
-        <div class="typewriter" aria-live="polite" aria-label="Mensajes de SEBASAM">
-          <span class="cursor" aria-hidden="true"></span>
-        </div>
-
-        <div class="footer-row">
-          <span class="sub">Próximamente</span>
+<BaseLayout
+  title={title}
+  description={description}
+  pathname="/"
+  jsonLd={autoRepairJsonLd("/")}
+>
+  <Header />
+  <main id="contenido">
+    <section class="hero section">
+      <div class="hero__inner container">
+        <div class="hero__copy">
+          <div class="">
+            <p class="eyebrow">{business.descriptor}</p>
+            <h1 class="hero-title">
+              <img
+                src="/brand/sebasam-logo-light.png"
+                alt={business.brand}
+                width="520"
+                height="220"
+              />
+            </h1>
+          </div>
+          <div
+            class="hero-line"
+            aria-labelledby="hero-line-accessible"
+            data-phrases={JSON.stringify(heroPhrases)}
+          >
+            <span aria-hidden="true">
+              <span class="hero-line__fixed">30 años</span>
+              <span class="hero-line__rotator">
+                <span class="hero-line__text">{heroPhrases[0]}</span>
+                <span class="hero-line__cursor"></span>
+              </span>
+            </span>
+            <span id="hero-line-accessible" class="sr-only">
+              30 años cuidando tu unidad. 30 años generando confianza. 30 años cuidando tu bolsillo.
+            </span>
+          </div>
         </div>
       </div>
-    </main>
+      <section class="section section--compact">
+        <div class="trust container surface technical-grid">
+          <div>
+            <p class="eyebrow">Criterio antes que cambio de piezas</p>
+            <h2>{business.trustMessage}</h2>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <p>{business.trustExplanation}</p>
+            <ContactActions />
+          </div>
+        </div>
+      </section>
+    </section>
 
-    <style>
-      :root {
-        --navy-950: #000814;
-        --navy-900: #001024;
-        --navy-800: #001b3f;
-        --navy-700: #002b68;
-        --primary: #004aad;
-        --primary-bright: #0059cc;
-        --primary-glow: #3b82f6;
-        --on-dark: #ffffff;
-        --on-dark-muted: #cbd5e1;
-        --font-sans: "Inter", system-ui, sans-serif;
-        --font-mono: "DM Mono", ui-monospace, monospace;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color-scheme: dark;
-      }
-
-      body {
-        font-family: var(--font-sans);
-        background: var(--navy-950);
-        color: var(--on-dark);
-        min-height: 100dvh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-      }
-
-      /* ══════════════════════════════════════════
-         BACKGROUND
-         ══════════════════════════════════════════ */
-
-      .bg-layer {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .bg-orbs {
-        position: absolute;
-        inset: 0;
-        filter: blur(100px);
-      }
-
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-      }
-
-      .orb-a {
-        width: 700px;
-        height: 700px;
-        background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-        top: -20%;
-        left: -15%;
-        opacity: 0.55;
-        animation: drift-a 16s ease-in-out infinite;
-      }
-
-      .orb-b {
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, var(--primary-glow) 0%, var(--navy-700) 50%, transparent 75%);
-        bottom: -25%;
-        right: -10%;
-        opacity: 0.45;
-        animation: drift-b 20s ease-in-out infinite;
-      }
-
-      .orb-c {
-        width: 450px;
-        height: 450px;
-        background: radial-gradient(circle, var(--navy-700) 0%, transparent 70%);
-        top: 40%;
-        left: 30%;
-        opacity: 0.30;
-        animation: drift-c 22s ease-in-out infinite;
-      }
-
-      @keyframes drift-a {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        33%      { transform: translate(8%, -5%) scale(1.15); }
-        66%      { transform: translate(-3%, 6%) scale(0.9); }
-      }
-
-      @keyframes drift-b {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        33%      { transform: translate(-6%, -4%) scale(1.1); }
-        66%      { transform: translate(5%, 3%) scale(0.92); }
-      }
-
-      @keyframes drift-c {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        50%      { transform: translate(-5%, 5%) scale(1.2); }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .orb { animation: none; }
-      }
-
-      /* subtle grain overlay */
-
-      .bg-grain {
-        position: absolute;
-        inset: 0;
-        opacity: 0.04;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        background-size: 256px 256px;
-      }
-
-      /* ══════════════════════════════════════════
-         LAYOUT
-         ══════════════════════════════════════════ */
-
-      .hero {
-        position: relative;
-        width: 100%;
-        z-index: 1;
-      }
-
-      .container {
-        position: relative;
-        max-width: 640px;
-        margin: 0 auto;
-        padding: 3rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1rem;
-      }
-
-      /* ══════════════════════════════════════════
-         LOGO + BURST
-         ══════════════════════════════════════════ */
-
-      .logo-stage {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-      }
-
-      .logo-burst {
-        position: absolute;
-        inset: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(0, 74, 173, 0.22) 0%,
-          rgba(0, 74, 173, 0.08) 30%,
-          rgba(0, 43, 104, 0.04) 55%,
-          transparent 72%
-        );
-        pointer-events: none;
-        z-index: 0;
-        animation: burst-breathe 4s ease-in-out infinite;
-      }
-
-      @keyframes burst-breathe {
-        0%, 100% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 0.75;
+    <section id="servicios" class="hero section">
+      <div class="container split-heading">
+        <div>
+          <p class="eyebrow">Servicios</p>
+          <h2 class="section-title">
+            Trabajo técnico para que la unidad vuelva a operar.
+          </h2>
+        </div>
+        <p class="section-copy">
+          Revisamos la unidad, explicamos opciones y recomendamos la solución
+          que conviene al caso y al presupuesto.
+        </p>
+      </div>
+      <div class="container service-rail">
+        {
+          business.services.map((service, index) => (
+            <article class="service-card surface">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{service}</h3>
+            </article>
+          ))
         }
-        50% {
-          transform: translate(-50%, -50%) scale(1.25);
-          opacity: 1;
-        }
-      }
+      </div>
+    </section>
 
-      @media (min-width: 480px) {
-        .logo-burst { width: 420px; height: 420px; }
-      }
-
-      @media (min-width: 640px) {
-        .logo-burst { width: 560px; height: 560px; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .logo-burst { animation: none; opacity: 0.85; }
-      }
-
-      /* ══════════════════════════════════════════
-         LOGO IMAGE
-         ══════════════════════════════════════════ */
-
-      .logo {
-        position: relative;
-        width: 160px;
-        height: 160px;
-        object-fit: contain;
-        z-index: 1;
-        filter: drop-shadow(0 0 30px rgba(0, 74, 173, 0.35));
-      }
-
-      @media (min-width: 480px) {
-        .logo { width: 220px; height: 220px; }
-      }
-
-      @media (min-width: 640px) {
-        .logo { width: 280px; height: 280px; }
-      }
-
-      /* ══════════════════════════════════════════
-         BRAND
-         ══════════════════════════════════════════ */
-
-      .brand {
-        position: relative;
-        font-size: clamp(2.8rem, 9vw, 5.5rem);
-        font-weight: 800;
-        letter-spacing: 0.06em;
-        color: var(--on-dark);
-        line-height: 1.05;
-        z-index: 1;
-        display: flex;
-        gap: 0;
-        text-shadow: 0 0 40px rgba(0, 74, 173, 0.15);
-      }
-
-      .char {
-        display: inline-block;
-      }
-
-      /* ══════════════════════════════════════════
-         DESCRIPTOR
-         ══════════════════════════════════════════ */
-
-      .descriptor {
-        font-family: var(--font-mono);
-        font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-        font-weight: 400;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--on-dark-muted);
-        opacity: 0.6;
-        max-width: 420px;
-        line-height: 1.6;
-        z-index: 1;
-      }
-
-      /* ══════════════════════════════════════════
-         TYPEWRITER
-         ══════════════════════════════════════════ */
-
-      .typewriter {
-        position: relative;
-        font-family: var(--font-mono);
-        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-        font-weight: 400;
-        letter-spacing: 0.02em;
-        color: var(--on-dark-muted);
-        min-height: 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.125rem;
-        z-index: 1;
-      }
-
-      .cursor {
-        display: inline-block;
-        width: 0.125rem;
-        height: 1.2em;
-        background: #06b6d4;
-        animation: blink 0.75s step-end infinite;
-        vertical-align: middle;
-        border-radius: 2px;
-        box-shadow: 0 0 6px #06b6d4;
-      }
-
-      @keyframes blink {
-        50% { background: transparent; box-shadow: none; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .cursor { animation: none; }
-      }
-
-      /* ══════════════════════════════════════════
-         FOOTER ROW
-         ══════════════════════════════════════════ */
-
-      .footer-row {
-        z-index: 1;
-      }
-
-      .sub {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--on-dark-muted);
-        opacity: 0.5;
-      }
-    </style>
-
-    <script>
-      const phrases = [
-        "Cuidamos tu unidad.",
-        "Cuidamos tu bolsillo.",
-        "Damos soluciones.",
-        "No somos cambiapiezas.",
-        "Antes confianza que tranza.",
-      ];
-
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-      const container = document.querySelector(".typewriter");
-      const cursor = container.querySelector(".cursor");
-
-      if (prefersReducedMotion) {
-        const span = document.createElement("span");
-        span.textContent = "Cuidamos tu unidad.";
-        cursor.before(span);
-        cursor.remove();
-      } else {
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let timeoutId;
-
-        const textSpan = document.createElement("span");
-        cursor.before(textSpan);
-
-        function type() {
-          const current = phrases[phraseIndex];
-          const speed = isDeleting ? 28 : 45 + Math.random() * 30;
-          const pauseBeforeDelete = 2400;
-          const pauseBeforeNext = 500;
-
-          if (!isDeleting) {
-            textSpan.textContent = current.slice(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === current.length) {
-              timeoutId = setTimeout(() => { isDeleting = true; type(); }, pauseBeforeDelete);
-              return;
-            }
-          } else {
-            textSpan.textContent = current.slice(0, charIndex - 1);
-            charIndex--;
-            if (charIndex === 0) {
-              isDeleting = false;
-              phraseIndex = (phraseIndex + 1) % phrases.length;
-              timeoutId = setTimeout(type, pauseBeforeNext);
-              return;
-            }
+    <section id="unidades" class="section section--dark">
+      <div class="container units-layout">
+        <div>
+          <p class="eyebrow">Unidades atendidas</p>
+          <h2 class="section-title">
+            De camionetas de trabajo a tractocamiones y remolques.
+          </h2>
+          <p class="section-copy">{business.vehicleExamples}</p>
+        </div>
+        <ul class="unit-list" aria-label="Tipos de unidades atendidas">
+          {
+            vehicleCategories.map((vehicle) => (
+              <li>
+                <span class="unit-list__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d={vehicle.icon} />
+                  </svg>
+                </span>
+                <span>{vehicle.label}</span>
+              </li>
+            ))
           }
-          timeoutId = setTimeout(type, speed);
+        </ul>
+      </div>
+    </section>
+
+    <section id="refacciones" class="section">
+      <div class="container split-heading">
+        <div>
+          <p class="eyebrow">Productos y refacciones</p>
+          <h2 class="section-title">
+            Refacciones relacionadas con muelles y suspensión.
+          </h2>
+        </div>
+        <p class="section-copy">
+          Consulta disponibilidad por WhatsApp. No publicamos precios ni
+          inventario porque cada caso se revisa de forma directa.
+        </p>
+      </div>
+      <div class="container parts surface technical-grid">
+        {business.products.map((product) => <span>{product}</span>)}
+      </div>
+    </section>
+
+    <section class="section section--compact">
+      <div class="container story surface">
+        <p class="eyebrow">Origen del nombre</p>
+        <p>{business.origin}</p>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contact-section">
+      <div class="container contact-layout">
+        <div>
+          <p class="eyebrow">Contacto</p>
+          <h2 class="section-title">
+            Manda mensaje, llama o abre la ruta en Maps.
+          </h2>
+          <p class="section-copy">
+            WhatsApp es el contacto principal para empezar una cotización o
+            explicar qué necesita tu unidad.
+          </p>
+          <ContactActions />
+        </div>
+        <aside class="contact-card surface">
+          <h3>Datos del taller</h3>
+          <p>{business.address.display}</p>
+          <BusinessHours />
+        </aside>
+      </div>
+    </section>
+    <section class="section section--compact">
+      <div class="trust container surface technical-grid">
+        <div>
+          <p class="eyebrow">Criterio antes que cambio de piezas</p>
+          <h2>{business.trustMessage}</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <p>{business.trustExplanation}</p>
+          <ContactActions />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    overflow: hidden;
+    padding-top: clamp(3rem, 7vw, 6rem);
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .hero__copy {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .hero-title {
+    margin: 0;
+  }
+
+  .hero-title img {
+    display: block;
+    width: min(100%, 680px);
+    height: auto;
+    filter: drop-shadow(0 22px 42px rgba(0, 43, 104, 0.12));
+  }
+
+  .hero-line {
+    color: var(--color-navy-900);
+    font-size: clamp(1.45rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.06em;
+  }
+
+  .hero-line > span[aria-hidden="true"] {
+    display: grid;
+    gap: 0.35em;
+  }
+
+  .hero-line__fixed,
+  .hero-line__rotator,
+  .hero-line__rotator span {
+    display: block;
+  }
+
+  .hero-line__fixed {
+    white-space: nowrap;
+  }
+
+  .hero-line__rotator {
+    display: inline-flex;
+    min-height: 1.12em;
+    align-items: center;
+    color: var(--color-blue-700);
+  }
+
+  .hero-line__text {
+    white-space: nowrap;
+  }
+
+  .hero-line__cursor {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.9em;
+    margin-left: 0.08em;
+    border-radius: 999px;
+    background: var(--color-blue-700);
+    animation: blink-cursor 0.75s step-end infinite;
+  }
+
+  @keyframes blink-cursor {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hero__lead {
+    margin: 0;
+    color: var(--color-blue-700);
+    font-size: clamp(1.3rem, 4vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .hero__body {
+    max-width: 680px;
+    margin: 0;
+    color: var(--color-slate-600);
+    font-size: clamp(1rem, 2.2vw, 1.18rem);
+    line-height: 1.75;
+  }
+
+  .hero__panel {
+    display: grid;
+    gap: 1rem;
+    align-content: center;
+    padding: clamp(1rem, 4vw, 1.5rem);
+    background:
+      radial-gradient(
+        circle at 65% 20%,
+        rgba(0, 74, 173, 0.28),
+        transparent 18rem
+      ),
+      linear-gradient(145deg, var(--color-navy-900), var(--color-navy-800));
+    color: var(--color-white);
+  }
+
+  .hero__specs,
+  .hero__address,
+  .hero__hours {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .hero__specs span,
+  .hero__address span,
+  .hero__hours > span {
+    color: rgba(255, 255, 255, 0.62);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero__specs strong,
+  .hero__address p,
+  .hero__hours p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .hero__hours strong {
+    color: var(--color-white);
+  }
+
+  .trust {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .trust h2,
+  .final-cta h2 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+  }
+
+  .trust p:not(.eyebrow),
+  .story p:not(.eyebrow) {
+    margin: 0;
+    color: var(--color-slate-600);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .split-heading,
+  .units-layout,
+  .contact-layout {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .service-rail {
+    display: grid;
+    grid-auto-columns: minmax(210px, 76vw);
+    grid-auto-flow: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    overflow-x: auto;
+    padding-block: 0.25rem 1rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .service-card {
+    min-height: 132px;
+    padding: 1rem;
+    scroll-snap-align: start;
+  }
+
+  .service-card span {
+    color: var(--color-blue-600);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  .service-card h3 {
+    margin: 1.75rem 0 0;
+    color: var(--color-navy-900);
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+  }
+
+  .section--dark {
+    background: linear-gradient(
+      145deg,
+      var(--color-navy-900),
+      var(--color-navy-800)
+    );
+    color: var(--color-white);
+  }
+
+  .section--dark .section-title,
+  .section--dark .section-copy {
+    color: var(--color-white);
+  }
+
+  .section--dark .section-copy {
+    opacity: 0.74;
+  }
+
+  .section--dark .eyebrow {
+    color: #9dccff;
+  }
+
+  .unit-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .unit-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.86);
+    font-weight: 700;
+  }
+
+  .unit-list__icon {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 0.85rem;
+    background: rgba(157, 204, 255, 0.14);
+    color: #9dccff;
+  }
+
+  .unit-list__icon svg {
+    width: 1.45rem;
+    height: 1.45rem;
+    fill: currentColor;
+  }
+
+  .parts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .parts span {
+    min-height: 72px;
+    padding: 1rem;
+    border: 1px solid rgba(0, 74, 173, 0.12);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--color-navy-900);
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    font-weight: 800;
+  }
+
+  .story {
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .contact-section {
+    background: var(--color-slate-50);
+  }
+
+  .contact-card {
+    display: grid;
+    gap: 1rem;
+    padding: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .contact-card h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .contact-card p {
+    margin: 0;
+    color: var(--color-slate-600);
+    line-height: 1.6;
+  }
+
+  .final-cta {
+    padding-top: 0;
+  }
+
+  .final-cta__box {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(1.25rem, 5vw, 2.5rem);
+  }
+
+  @media (min-width: 700px) {
+    .service-rail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-flow: row;
+      overflow: visible;
+      padding-block: 0;
+      scroll-snap-type: none;
+    }
+
+    .parts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 960px) {
+    .hero__copy {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.95fr) minmax(380px, 1.05fr);
+      align-items: center;
+      column-gap: clamp(2rem, 6vw, 5rem);
+    }
+
+    .hero-title img {
+      width: min(100%, 560px);
+    }
+
+    .hero-line {
+      font-size: clamp(2.35rem, 4.6vw, 4.6rem);
+    }
+
+    .hero-line > span[aria-hidden="true"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.28em;
+      align-items: baseline;
+    }
+
+    .hero-line__rotator {
+      min-width: 8.5em;
+    }
+
+    .hero__inner,
+    .trust,
+    .split-heading,
+    .units-layout,
+    .contact-layout,
+    .final-cta__box {
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    }
+
+    .service-rail {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line__cursor {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const heroLine = document.querySelector(".hero-line");
+  const heroText = heroLine?.querySelector(".hero-line__text");
+  const heroCursor = heroLine?.querySelector(".hero-line__cursor");
+  const phrases = JSON.parse(heroLine?.getAttribute("data-phrases") ?? "[]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (heroText && Array.isArray(phrases) && phrases.length > 0) {
+    if (prefersReducedMotion) {
+      heroText.textContent = phrases[0];
+      heroCursor?.remove();
+    } else {
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let timeoutId;
+
+      const type = () => {
+        const current = phrases[phraseIndex];
+        const speed = isDeleting ? 28 : 45 + Math.random() * 30;
+        const pauseBeforeDelete = 2400;
+        const pauseBeforeNext = 500;
+
+        if (!isDeleting) {
+          heroText.textContent = current.slice(0, charIndex + 1);
+          charIndex++;
+
+          if (charIndex === current.length) {
+            timeoutId = window.setTimeout(() => {
+              isDeleting = true;
+              type();
+            }, pauseBeforeDelete);
+            return;
+          }
+        } else {
+          heroText.textContent = current.slice(0, charIndex - 1);
+          charIndex--;
+
+          if (charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            timeoutId = window.setTimeout(type, pauseBeforeNext);
+            return;
+          }
         }
 
-        type();
+        timeoutId = window.setTimeout(type, speed);
+      };
 
-        window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener(
-          "change",
-          (e) => {
-            if (e.matches) {
-              clearTimeout(timeoutId);
-              textSpan.textContent = phrases[phraseIndex];
-              cursor.remove();
-            }
+      type();
+
+      window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener(
+        "change",
+        (event) => {
+          if (event.matches) {
+            window.clearTimeout(timeoutId);
+            heroText.textContent = phrases[phraseIndex];
+            heroCursor?.remove();
           }
-        );
-      }
-    </script>
-  </body>
-</html>
+        },
+      );
+    }
+  }
+</script>

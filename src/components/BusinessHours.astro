@@ -1,0 +1,44 @@
+---
+import { business } from '../content/business';
+---
+
+<dl class="hours" aria-label="Horarios de atencion">
+  {business.hours.map((item) => (
+    <div class="hours__row">
+      <dt>{item.label}</dt>
+      <dd>{item.value}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .hours {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .hours__row {
+    display: grid;
+    gap: 0.15rem;
+    padding: 1rem;
+    border: 1px solid rgba(215, 224, 234, 0.86);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  dt {
+    color: var(--color-slate-600);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--color-navy-900);
+    font-size: 1rem;
+    font-weight: 800;
+  }
+</style>

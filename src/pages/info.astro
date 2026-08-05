@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactActions from '../components/ContactActions.astro';
+import BusinessHours from '../components/BusinessHours.astro';
+import { autoRepairJsonLd, business } from '../content/business';
+
+const title = 'Información de contacto | SEBASAM';
+const description = 'Tarjeta pública de SEBASAM con WhatsApp, teléfono, dirección, horarios y Google Maps.';
+---
+
+<BaseLayout title={title} description={description} pathname="/info" jsonLd={autoRepairJsonLd('/info')}>
+  <main id="contenido" class="info-page">
+    <article class="info-card surface technical-grid" aria-labelledby="info-title">
+      <header class="info-card__header">
+        <img src="/brand/sebasam-logo-light.png" alt={business.brand} width="150" height="150" />
+        <div>
+          <p class="eyebrow">Tarjeta pública</p>
+          <h1 id="info-title">{business.brand}</h1>
+          <p>{business.descriptor}</p>
+        </div>
+      </header>
+
+      <ContactActions compact mapsLabel="Abrir Maps" />
+
+      <section class="info-block" aria-labelledby="address-title">
+        <h2 id="address-title">Dirección</h2>
+        <p>{business.address.display}</p>
+      </section>
+
+      <section class="info-block" aria-labelledby="hours-title">
+        <h2 id="hours-title">Horarios</h2>
+        <BusinessHours />
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .info-page {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 1rem;
+  }
+
+  .info-card {
+    width: min(100%, 620px);
+    padding: clamp(1rem, 5vw, 2rem);
+  }
+
+  .info-card__header {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card__header img {
+    width: 118px;
+    height: 118px;
+    object-fit: contain;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--color-navy-900);
+    font-size: clamp(2.8rem, 14vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+  }
+
+  .info-card__header p:not(.eyebrow),
+  .info-block p {
+    margin: 0;
+    color: var(--color-slate-600);
+    line-height: 1.65;
+  }
+
+  .info-block {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(215, 224, 234, 0.86);
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    color: var(--color-navy-900);
+    font-size: 1rem;
+  }
+
+  @media (min-width: 560px) {
+    .info-card__header {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+  }
+</style>

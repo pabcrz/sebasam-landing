@@ -1,0 +1,98 @@
+---
+import { business, navigation } from '../content/business';
+---
+
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="brand-link" href="/" aria-label="Inicio de SEBASAM">
+      <img src="/brand/sebasam-mark-light.png" alt="" width="42" height="42" />
+      <span>{business.brand}</span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="header-cta" href={business.contacts.whatsapp.href} aria-label={business.contacts.whatsapp.ariaLabel}>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(215, 224, 234, 0.72);
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(18px);
+  }
+
+  .site-header__inner {
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand-link,
+  .nav a,
+  .header-cta {
+    min-height: 44px;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    gap: 0.65rem;
+    color: var(--color-navy-900);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-link img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  .nav {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .nav a {
+    display: inline-flex;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    color: var(--color-slate-600);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .nav a:hover {
+    background: var(--color-blue-50);
+    color: var(--color-blue-700);
+  }
+
+  .header-cta {
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    background: var(--color-navy-900);
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  @media (min-width: 820px) {
+    .nav {
+      display: flex;
+    }
+  }
+</style>
