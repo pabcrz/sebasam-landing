@@ -89,7 +89,7 @@ export const muelles = {
   includes: [
     'Brio a muelles',
     'Refuerzos de muelles',
-    'Cambio de muelles a suspensión con bolsas de aire',
+    'Adaptación de muelles a suspensión con bolsa de aire',
     'Cambio de bolsas de aire a muelles',
     'Abrazaderas, bujes, perchas, columpios y balancines',
   ],
