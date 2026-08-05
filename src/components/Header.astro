@@ -8,8 +8,17 @@ import { business, navigation } from '../content/business';
       <img src="/brand/sebasam-mark-light.png" alt="" width="42" height="42" />
       <span>{business.brand}</span>
     </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú de navegación">
+      <span class="nav-toggle-label__bar"></span>
+      <span class="nav-toggle-label__bar"></span>
+      <span class="nav-toggle-label__bar"></span>
+    </label>
     <nav class="nav" aria-label="Navegación principal">
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a class="nav-cta" href={business.contacts.whatsapp.href} aria-label={business.contacts.whatsapp.ariaLabel}>
+        WhatsApp
+      </a>
     </nav>
     <a class="header-cta" href={business.contacts.whatsapp.href} aria-label={business.contacts.whatsapp.ariaLabel}>
       WhatsApp
@@ -60,17 +69,29 @@ import { business, navigation } from '../content/business';
 
   .nav {
     display: none;
-    align-items: center;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex-direction: column;
     gap: 0.25rem;
+    padding: 0.75rem 1rem 1.25rem;
+    border-bottom: 1px solid rgba(215, 224, 234, 0.88);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(18px);
   }
 
   .nav a {
-    display: inline-flex;
+    display: flex;
+    min-height: 44px;
+    align-items: center;
     padding: 0.4rem 0.75rem;
     border-radius: 999px;
     color: var(--color-slate-600);
     font-size: 0.9rem;
     font-weight: 700;
+    text-decoration: none;
     transition: background 180ms ease, color 180ms ease;
   }
 
@@ -79,20 +100,102 @@ import { business, navigation } from '../content/business';
     color: var(--color-blue-700);
   }
 
-  .header-cta {
+  .nav-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-toggle-label {
     display: inline-flex;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 0.75rem 1rem;
+    gap: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .nav-toggle-label__bar {
+    display: block;
+    width: 22px;
+    height: 2px;
     border-radius: 999px;
     background: var(--color-navy-900);
-    color: var(--color-white);
-    font-size: 0.9rem;
-    font-weight: 800;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  #nav-toggle:checked ~ .nav {
+    display: flex;
+    animation: nav-reveal 160ms ease;
+  }
+
+  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @keyframes nav-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-cta {
+    margin-top: 0.25rem;
+    justify-content: center;
+    background: var(--color-navy-900);
+    color: var(--color-white) !important;
+  }
+
+  .header-cta {
+    display: none;
   }
 
   @media (min-width: 820px) {
     .nav {
       display: flex;
+      position: static;
+      flex-direction: row;
+      gap: 0.25rem;
+      padding: 0;
+      border-bottom: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .nav-cta,
+    .nav-toggle,
+    .nav-toggle-label {
+      display: none;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: var(--color-navy-900);
+      color: var(--color-white);
+      font-size: 0.9rem;
+      font-weight: 800;
     }
   }
 </style>
