@@ -83,16 +83,16 @@ export const navigation = [
 export const muelles = {
   title: 'Servicio de Muelles en CDMX | SEBASAM',
   description:
-    'Servicio de muelles para camionetas, camiones y remolques en Iztapalapa, CDMX. Brio a muelles, refuerzos, soldadura y refacciones. SEBASAM, 30 años de experiencia.',
+    'Servicio de muelles para camionetas, camiones y remolques en Iztapalapa, CDMX. Brio a muelles, refuerzos, cambio de tipo de suspensión y refacciones. SEBASAM, 30 años de experiencia.',
   intro:
-    'Los muelles son el corazón de la suspensión: sostienen la carga, absorben el golpe y definen cómo se comporta la unidad. Los revisamos, enderezamos, reforzamos o cambiamos según el caso, con criterio y explicando cada opción antes de tocar nada.',
+    'Los muelles son el corazón de la suspensión: sostienen la carga, absorben el golpe y definen cómo se comporta la unidad. Los revisamos, enderezamos y reforzamos, o convertimos la suspensión al tipo que tu unidad necesita, explicando cada opción antes de tocar nada.',
   includes: [
     'Brio a muelles',
     'Refuerzos de muelles',
-    'Soldadura de hojas',
-    'Abrazaderas y pernos de muelle',
-    'Bujes, perchas y columpios',
-    'Cambio de muelle completo',
+    'Cambio de muelles a suspensión con bolsas de aire',
+    'Cambio de bolsas de aire a muelles',
+    'Cambio de tipo de suspensión entre marcas',
+    'Abrazaderas, bujes, perchas y columpios',
   ],
   faqs: [
     {
