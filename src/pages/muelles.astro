@@ -25,9 +25,18 @@ const description = muelles.description;
   <main id="contenido">
     <section class="section">
       <div class="container split-heading">
-        <div>
-          <p class="eyebrow">Especialistas en muelles</p>
-          <h1 class="section-title">Servicio de muelles</h1>
+        <div class="muelles-hero">
+          <img
+            class="muelles-logo"
+            src="/brand/sebasam-logo-light.png"
+            alt={business.brand}
+            width="520"
+            height="220"
+          />
+          <div>
+            <p class="eyebrow">Especialistas en muelles</p>
+            <h1 class="section-title">Servicio de muelles</h1>
+          </div>
         </div>
         <div class="hero-copy">
           <p class="section-copy">{muelles.intro}</p>
@@ -45,9 +54,9 @@ const description = muelles.description;
           </h2>
         </div>
         <p class="section-copy">
-          Revisamos la altura, la tensión y el estado de cada hoja. Enderezamos,
-          reforzamos o cambiamos lo necesario, y explicamos cada opción antes de
-          avanzar.
+          Revisamos la altura, la tensión y el estado de cada hoja. Hacemos el
+          brio, los refuerzos o la conversión del tipo de suspensión que tu
+          unidad necesita, y explicamos cada opción antes de avanzar.
         </p>
       </div>
       <div class="container service-rail">
@@ -132,6 +141,19 @@ const description = muelles.description;
   .contact-layout {
     display: grid;
     gap: 2rem;
+  }
+
+  .muelles-hero {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .muelles-logo {
+    display: block;
+    width: min(100%, 520px);
+    height: auto;
+    filter: drop-shadow(0 22px 42px rgba(0, 43, 104, 0.12));
   }
 
   .hero-copy {
