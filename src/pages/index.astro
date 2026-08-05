@@ -7,9 +7,9 @@ import BusinessHours from "../components/BusinessHours.astro";
 import { autoRepairJsonLd, business } from "../content/business";
 
 const title =
-  "SEBASAM | Suspensiones de aire, muelles y refacciones en Iztapalapa";
+  "SEBASAM | Servicio de Muelles y Suspensión de Aire en Iztapalapa";
 const description =
-  "Servicio y refacciones para suspensiones de aire y muelles. Contacta a SEBASAM por WhatsApp, teléfono o Google Maps.";
+  "Servicio de muelles, refacciones y suspensión de aire en Iztapalapa, CDMX. SEBASAM con 30 años de experiencia. Contacto por WhatsApp, teléfono o Google Maps.";
 
 const heroPhrases = [
   "cuidando tu unidad.",
@@ -83,6 +83,25 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
           </div>
         </div>
       </section>
+    </section>
+
+    <section id="muelles" class="section section--compact">
+      <div class="container split-heading">
+        <div>
+          <p class="eyebrow">Servicio de muelles</p>
+          <h2 class="section-title">Muelles: el corazón de la suspensión.</h2>
+        </div>
+        <div class="muelles-band__body">
+          <p class="section-copy">
+            Brio a muelles, refuerzos, soldadura y refacciones para camionetas,
+            camiones y remolques. 30 años revisando cada caso antes de cambiar
+            una sola pieza.
+          </p>
+          <a class="muelles-band__link" href="/muelles">
+            Ver servicio de muelles
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="servicios" class="hero section">
@@ -378,6 +397,32 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
   .contact-layout {
     display: grid;
     gap: 2rem;
+  }
+
+  .muelles-band__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .muelles-band__link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    background: var(--color-navy-900);
+    color: var(--color-white);
+    font-size: 0.92rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background 180ms ease;
+  }
+
+  .muelles-band__link:hover {
+    background: var(--color-blue-700);
   }
 
   .service-rail {
