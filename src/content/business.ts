@@ -91,8 +91,7 @@ export const muelles = {
     'Refuerzos de muelles',
     'Cambio de muelles a suspensión con bolsas de aire',
     'Cambio de bolsas de aire a muelles',
-    'Cambio de tipo de suspensión entre marcas',
-    'Abrazaderas, bujes, perchas y columpios',
+    'Abrazaderas, bujes, perchas, columpios y balancines',
   ],
   faqs: [
     {
