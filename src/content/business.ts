@@ -90,7 +90,7 @@ export const muelles = {
     'Brio a muelles',
     'Refuerzos de muelles',
     'Adaptación de muelles a suspensión con bolsa de aire',
-    'Cambio de bolsas de aire a muelles',
+    'Cambio de bolsas de aire',
     'Abrazaderas, bujes, perchas, columpios y balancines',
   ],
   faqs: [
