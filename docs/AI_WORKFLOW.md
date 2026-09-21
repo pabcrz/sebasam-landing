@@ -60,12 +60,12 @@ Issue forms can apply labels only after those labels exist in the GitHub reposit
 
 ## Content Source Discipline
 
-- Treat `README.md` as the current product and content brief until a dedicated content source exists.
+- Treat [`docs/content-brief.md`](content-brief.md) as the product and content brief.
 - Centralize confirmed shared business data in `src/content/business.ts` when implementation begins.
 - Pages and components must consume shared business data rather than duplicating phone numbers, addresses, hours, services, products, or map links.
 - Keep route-specific metadata distinct while deriving common organization details from the same confirmed source.
 - Do not invent or infer business facts. Flag missing or conflicting content for maintainer confirmation.
-- Keep public-facing copy in the language established by the product brief; keep technical documentation in clear professional English unless the target document uses another language.
+- Keep public-facing copy in the language established by [`docs/content-brief.md`](content-brief.md); keep technical documentation in clear professional English unless the target document uses another language.
 
 ## Accessibility and SEO
 
@@ -96,5 +96,6 @@ Record the exact command and result for every check. If a check is skipped or bl
 ## References
 
 - [`docs/GITFLOW.md`](GITFLOW.md): branch, PR, release, and hotfix flow.
-- [`README.md`](../README.md): product brief, content, architecture, and verification expectations.
+- [`docs/content-brief.md`](content-brief.md): confirmed product and content brief.
+- [`docs/architecture.md`](architecture.md): implementation, design, accessibility, SEO, assets, scope, roadmap, and verification expectations.
 - [`.github/PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md): required PR evidence and checklist.
