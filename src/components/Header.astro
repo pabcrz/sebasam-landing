@@ -5,16 +5,17 @@ import { business, navigation } from '../content/business';
 <header class="site-header">
   <div class="site-header__inner container">
     <a class="brand-link" href="/" aria-label="Inicio de SEBASAM">
-      <img src="/brand/sebasam-mark-light.png" alt="" width="42" height="42" />
+      <img src="/brand/sebasam-mark-192.png" alt="" width="42" height="42" />
       <span>{business.brand}</span>
     </a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú de navegación">
-      <span class="nav-toggle-label__bar"></span>
-      <span class="nav-toggle-label__bar"></span>
-      <span class="nav-toggle-label__bar"></span>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-controls="site-navigation" />
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span class="sr-only">Abrir menú de navegación</span>
+      <span class="nav-toggle-label__bar" aria-hidden="true"></span>
+      <span class="nav-toggle-label__bar" aria-hidden="true"></span>
+      <span class="nav-toggle-label__bar" aria-hidden="true"></span>
     </label>
-    <nav class="nav" aria-label="Navegación principal">
+    <nav id="site-navigation" class="nav" aria-label="Navegación principal">
       {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
       <a class="nav-cta" href={business.contacts.whatsapp.href} aria-label={business.contacts.whatsapp.ariaLabel}>
         WhatsApp
@@ -108,6 +109,17 @@ import { business, navigation } from '../content/business';
     pointer-events: none;
   }
 
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .nav-toggle-label {
     display: inline-flex;
     width: 44px;
@@ -134,15 +146,15 @@ import { business, navigation } from '../content/business';
     animation: nav-reveal 160ms ease;
   }
 
-  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(1) {
+  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(2) {
     transform: translateY(7px) rotate(45deg);
   }
 
-  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(2) {
+  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(3) {
     opacity: 0;
   }
 
-  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(3) {
+  #nav-toggle:checked ~ .nav-toggle-label .nav-toggle-label__bar:nth-child(4) {
     transform: translateY(-7px) rotate(-45deg);
   }
 

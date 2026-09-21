@@ -10,15 +10,15 @@ const { compact = false, mapsLabel = business.contacts.maps.label } = Astro.prop
 ---
 
 <div class:list={['contact-actions', { 'contact-actions--compact': compact }]}>
-  <a class="action action--primary" href={business.contacts.whatsapp.href} aria-label={business.contacts.whatsapp.ariaLabel}>
+  <a class="action action--primary" href={business.contacts.whatsapp.href}>
     <span>WhatsApp</span>
     <strong>{business.contacts.whatsapp.label}</strong>
   </a>
-  <a class="action" href={business.contacts.phone.href} aria-label={business.contacts.phone.ariaLabel}>
+  <a class="action" href={business.contacts.phone.href}>
     <span>Llamar</span>
     <strong>{business.contacts.phone.label}</strong>
   </a>
-  <a class="action" href={business.contacts.maps.href} aria-label={business.contacts.maps.ariaLabel}>
+  <a class="action" href={business.contacts.maps.href}>
     <span>Maps</span>
     <strong>{mapsLabel}</strong>
   </a>
