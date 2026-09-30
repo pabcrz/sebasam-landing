@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../content/business';
+
+const title = 'Página no encontrada | SEBASAM';
+const description = 'La página que buscás no está disponible. Volvé al inicio o consultá la información de SEBASAM.';
+---
+
+<BaseLayout title={title} description={description} pathname="/404.html">
+  <main id="contenido" class="not-found">
+    <section class="not-found__card surface technical-grid" aria-labelledby="not-found-title">
+      <p class="eyebrow">{business.brand}</p>
+      <p class="not-found__code" aria-hidden="true">404</p>
+      <h1 id="not-found-title">No encontramos esta página</h1>
+      <p class="not-found__message">
+        El enlace puede haber cambiado o ya no estar disponible. Podés seguir desde acá:
+      </p>
+      <nav class="not-found__links" aria-label="Enlaces útiles">
+        <a class="not-found__link not-found__link--primary" href="/">Volvé al inicio</a>
+        <a class="not-found__link" href="/info">Ver información y contacto</a>
+        <a class="not-found__link" href="/muelles">Conocer el servicio de muelles</a>
+      </nav>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: clamp(1rem, 5vw, 3rem);
+  }
+
+  .not-found__card {
+    width: min(100%, 760px);
+    padding: clamp(1.5rem, 6vw, 3.5rem);
+    text-align: center;
+  }
+
+  .not-found__code {
+    margin: 0;
+    color: var(--color-blue-600);
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 18vw, 8rem);
+    font-weight: 500;
+    letter-spacing: -0.1em;
+    line-height: 0.9;
+  }
+
+  h1 {
+    margin: 1.25rem 0 0;
+    color: var(--color-navy-900);
+    font-size: clamp(2rem, 7vw, 3.75rem);
+    letter-spacing: -0.06em;
+    line-height: 1;
+  }
+
+  .not-found__message {
+    max-width: 38rem;
+    margin: 1rem auto 0;
+    color: var(--color-slate-600);
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    line-height: 1.65;
+  }
+
+  .not-found__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .not-found__link {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-slate-200);
+    border-radius: 999px;
+    background: var(--color-white);
+    color: var(--color-navy-900);
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+
+  .not-found__link--primary {
+    border-color: var(--color-navy-900);
+    background: var(--color-navy-900);
+    color: var(--color-white);
+  }
+
+  .not-found__link:hover {
+    border-color: var(--color-blue-700);
+    background: var(--color-blue-700);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 520px) {
+    .not-found__links {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .not-found__link {
+      width: 100%;
+    }
+  }
+</style>
