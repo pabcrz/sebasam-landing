@@ -85,7 +85,7 @@ export const muelles = {
   description:
     'Servicio de muelles para camionetas, camiones y remolques en Iztapalapa, CDMX. Brio a muelles, refuerzos, cambio de tipo de suspensión y refacciones. SEBASAM, 30 años de experiencia.',
   intro:
-    'Los muelles son el corazón de la suspensión: sostienen la carga, absorben el golpe y definen cómo se comporta la unidad. Los revisamos, enderezamos y reforzamos, o convertimos la suspensión al tipo que tu unidad necesita, explicando cada opción antes de tocar nada.',
+    'Atendemos muelles de camionetas, camiones y remolques. Revisamos la altura de la unidad y el estado de los muelles para definir el trabajo requerido.',
   includes: [
     'Brio a muelles',
     'Refuerzos de muelles',
@@ -103,11 +103,6 @@ export const muelles = {
       question: '¿Cada cuánto conviene revisar los muelles?',
       answer:
         'Depende del uso y la carga. En unidades de trabajo conviene revisarlos en cada servicio programado; si notás altura baja, golpes o inestabilidad, acercate antes.',
-    },
-    {
-      question: '¿Trabajan muelles de camionetas, camiones y remolques?',
-      answer:
-        'Sí. Atendemos desde pickups y camionetas de trabajo hasta camiones ligeros y medianos, rabones, tortones, tractocamiones y remolques.',
     },
     {
       question: '¿Cómo pido una cotización?',

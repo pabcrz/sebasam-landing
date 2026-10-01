@@ -11,12 +11,6 @@ const title =
 const description =
   "Servicio de muelles, refacciones y suspensión de aire en Iztapalapa, CDMX. SEBASAM con 30 años de experiencia. Contacto por WhatsApp, teléfono o Google Maps.";
 
-const heroPhrases = [
-  "cuidando tu unidad.",
-  "generando confianza.",
-  "cuidando tu bolsillo.",
-] as const;
-
 const vehicleIcons = [
   "M5 15h18l-2-5h-3l-2-4H9l-2 4H4l1 5Zm2.5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z",
   "M4 9h11l4 5h1v4h-2.5a2 2 0 0 0-4 0h-5a2 2 0 0 0-4 0H3v-7a2 2 0 0 1 1-2Zm12 1v4h2.2L15 10h1Z",
@@ -53,22 +47,7 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
               />
             </h1>
           </div>
-          <div
-            class="hero-line"
-            aria-labelledby="hero-line-accessible"
-            data-phrases={JSON.stringify(heroPhrases)}
-          >
-            <span aria-hidden="true">
-              <span class="hero-line__fixed">30 años</span>
-              <span class="hero-line__rotator">
-                <span class="hero-line__text">{heroPhrases[0]}</span>
-                <span class="hero-line__cursor"></span>
-              </span>
-            </span>
-            <span id="hero-line-accessible" class="sr-only">
-              30 años cuidando tu unidad. 30 años generando confianza. 30 años cuidando tu bolsillo.
-            </span>
-          </div>
+          <p class="hero-line">{business.mainMessage}</p>
         </div>
       </div>
       <section class="section section--compact">
@@ -92,11 +71,6 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
           <h2 class="section-title">Muelles: el corazón de la suspensión.</h2>
         </div>
         <div class="muelles-band__body">
-          <p class="section-copy">
-            Brio a muelles, refuerzos y cambio de tipo de suspensión para
-            camionetas, camiones y remolques. 30 años revisando cada caso
-            antes de tocar una sola pieza.
-          </p>
           <a class="muelles-band__link" href="/muelles">
             Ver servicio de muelles
           </a>
@@ -200,18 +174,6 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
         </aside>
       </div>
     </section>
-    <section class="section section--compact">
-      <div class="trust container surface technical-grid">
-        <div>
-          <p class="eyebrow">Criterio antes que cambio de piezas</p>
-          <h2>{business.trustMessage}</h2>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <p>{business.trustExplanation}</p>
-          <ContactActions />
-        </div>
-      </div>
-    </section>
   </main>
   <Footer />
 </BaseLayout>
@@ -246,64 +208,12 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
   }
 
   .hero-line {
+    margin: 0;
     color: var(--color-navy-900);
     font-size: clamp(1.45rem, 5vw, 3.2rem);
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.06em;
-  }
-
-  .hero-line > span[aria-hidden="true"] {
-    display: grid;
-    gap: 0.35em;
-  }
-
-  .hero-line__fixed,
-  .hero-line__rotator,
-  .hero-line__rotator span {
-    display: block;
-  }
-
-  .hero-line__fixed {
-    white-space: nowrap;
-  }
-
-  .hero-line__rotator {
-    display: inline-flex;
-    min-height: 1.12em;
-    align-items: center;
-    color: var(--color-blue-700);
-  }
-
-  .hero-line__text {
-    white-space: nowrap;
-  }
-
-  .hero-line__cursor {
-    display: inline-block;
-    width: 0.08em;
-    height: 0.9em;
-    margin-left: 0.08em;
-    border-radius: 999px;
-    background: var(--color-blue-700);
-    animation: blink-cursor 0.75s step-end infinite;
-  }
-
-  @keyframes blink-cursor {
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
   }
 
   .hero__lead {
@@ -601,17 +511,6 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
       font-size: clamp(2.35rem, 4.6vw, 4.6rem);
     }
 
-    .hero-line > span[aria-hidden="true"] {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.28em;
-      align-items: baseline;
-    }
-
-    .hero-line__rotator {
-      min-width: 8.5em;
-    }
-
     .hero__inner,
     .trust,
     .split-heading,
@@ -626,74 +525,4 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero-line__cursor {
-      display: none;
-    }
-  }
 </style>
-
-<script>
-  const heroLine = document.querySelector(".hero-line");
-  const heroText = heroLine?.querySelector(".hero-line__text");
-  const heroCursor = heroLine?.querySelector(".hero-line__cursor");
-  const phrases = JSON.parse(heroLine?.getAttribute("data-phrases") ?? "[]");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (heroText && Array.isArray(phrases) && phrases.length > 0) {
-    if (prefersReducedMotion) {
-      heroText.textContent = phrases[0];
-      heroCursor?.remove();
-    } else {
-      let phraseIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-      let timeoutId;
-
-      const type = () => {
-        const current = phrases[phraseIndex];
-        const speed = isDeleting ? 28 : 45 + Math.random() * 30;
-        const pauseBeforeDelete = 2400;
-        const pauseBeforeNext = 500;
-
-        if (!isDeleting) {
-          heroText.textContent = current.slice(0, charIndex + 1);
-          charIndex++;
-
-          if (charIndex === current.length) {
-            timeoutId = window.setTimeout(() => {
-              isDeleting = true;
-              type();
-            }, pauseBeforeDelete);
-            return;
-          }
-        } else {
-          heroText.textContent = current.slice(0, charIndex - 1);
-          charIndex--;
-
-          if (charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            timeoutId = window.setTimeout(type, pauseBeforeNext);
-            return;
-          }
-        }
-
-        timeoutId = window.setTimeout(type, speed);
-      };
-
-      type();
-
-      window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener(
-        "change",
-        (event) => {
-          if (event.matches) {
-            window.clearTimeout(timeoutId);
-            heroText.textContent = phrases[phraseIndex];
-            heroCursor?.remove();
-          }
-        },
-      );
-    }
-  }
-</script>
