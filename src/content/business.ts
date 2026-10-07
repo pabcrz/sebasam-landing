@@ -7,8 +7,6 @@ export const business = {
   trustMessage: 'Tu unidad y tu presupuesto van primero.',
   trustExplanation:
     'No cambiamos piezas por cambiar. Revisamos cada caso, explicamos las opciones y buscamos la mejor solución según las necesidades y el presupuesto del cliente.',
-  origin:
-    'SEBASAM nació de Sebas, como "Servicio Básico a Suspensiones de Aire y Muelles". Después de 30 años de experiencia, el nombre continúa representando nuestra especialidad y compromiso con cada cliente.',
   url: siteUrl,
   logo: '/brand/sebasam-logo-dark.png',
   mark: '/brand/sebasam-mark-dark.png',
