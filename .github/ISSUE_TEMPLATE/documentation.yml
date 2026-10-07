@@ -1,0 +1,61 @@
+name: Documentation improvement
+description: Propose a focused improvement to the repository documentation.
+title: "docs: "
+labels:
+  - documentation
+  - status:needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for documentation changes. Keep the proposal focused on one outcome.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: What documentation should change, and why?
+      placeholder: Simplify the README into a concise repository entry point.
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current state
+      description: Describe the confusing, outdated, duplicated, or missing documentation.
+      placeholder: The README mixes onboarding, product requirements, architecture, and roadmap details.
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired outcome
+      description: Describe what should be true after the documentation change.
+      placeholder: The README explains what the project is, how to run it, and where detailed documentation lives.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      description: Confirm the intended boundaries of this documentation change.
+      options:
+        - label: This change is documentation-only.
+          required: true
+        - label: The change will not add secrets, private data, or personal machine paths.
+          required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: List the concrete conditions that will make this issue complete.
+      placeholder: |
+        - README contains setup and verification commands.
+        - Detailed product and architecture guidance has a documented home.
+        - Links from the README resolve correctly.
+    validations:
+      required: true
