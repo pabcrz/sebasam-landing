@@ -31,6 +31,21 @@ const description = 'Tarjeta pública de SEBASAM con WhatsApp, teléfono, direcc
         <h2 id="hours-title">Horarios</h2>
         <BusinessHours />
       </section>
+
+      <section class="info-block" aria-labelledby="services-title">
+        <h2 id="services-title">Servicios</h2>
+        <ul class="info-list">
+          {business.services.map((service) => <li>{service}</li>)}
+        </ul>
+      </section>
+
+      <section class="info-block" aria-labelledby="products-title">
+        <h2 id="products-title">Productos y refacciones</h2>
+        <ul class="info-list">
+          {business.products.map((product) => <li>{product}</li>)}
+        </ul>
+        <p class="info-note">Consulta disponibilidad por WhatsApp.</p>
+      </section>
     </article>
   </main>
 </BaseLayout>
@@ -79,6 +94,20 @@ const description = 'Tarjeta pública de SEBASAM con WhatsApp, teléfono, direcc
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid rgba(215, 224, 234, 0.86);
+  }
+
+  .info-list {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--color-slate-600);
+    line-height: 1.55;
+  }
+
+  .info-note {
+    margin-top: 0.85rem;
+    font-weight: 700;
   }
 
   h2 {

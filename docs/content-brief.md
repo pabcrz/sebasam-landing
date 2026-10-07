@@ -7,15 +7,7 @@ Este documento concentra el contenido confirmado y las reglas de comunicación d
 - **Nombre principal:** SEBASAM.
 - **Descriptor comercial:** **Servicio y refacciones para suspensiones de aire y muelles.**
 
-SEBASAM es la marca. El descriptor explica la especialidad del taller, pero no se presenta como el significado literal del acrónimo.
-
-SEBASAM nació como:
-
-> **SE**rvicio **BAS**ico **A** Suspensiones de **A**ire y **M**uelles.
-
-La historia puede aparecer en una sección breve de la landing:
-
-> SEBASAM nació como “Servicio Básico a Suspensiones de Aire y Muelles”. Después de 30 años de experiencia, el nombre continúa representando nuestra especialidad y compromiso con cada cliente.
+SEBASAM es la marca. El descriptor explica la especialidad del taller, pero no se presenta como el significado literal del acrónimo. No publicar una historia de origen del nombre en los datos comerciales ni en las páginas públicas.
 
 ### Logotipos
 
@@ -24,19 +16,24 @@ La historia puede aparecer en una sección breve de la landing:
 | Logo completo | Header, footer y piezas amplias. |
 | Símbolo corto | Favicon, navegación móvil, avatar social y marca compacta. |
 
-Archivos objetivo:
+Los recursos web actuales son PNG e ICO; no hace falta crear SVG para actualizar el sitio.
 
 ```text
-public/brand/
-├── sebasam-logo.svg
-├── sebasam-mark.svg
-├── favicon.svg
-├── favicon-32.png
-├── favicon-48.png
-└── apple-touch-icon.png
+public/
+├── apple-touch-icon.png
+├── favicon-32x32.png
+├── favicon-48x48.png
+├── favicon.ico
+└── brand/
+    ├── sebasam-logo-dark.png
+    ├── sebasam-logo-light.png
+    ├── sebasam-mark-192.png
+    ├── sebasam-mark-512.png
+    ├── sebasam-mark-dark.png
+    └── sebasam-mark-light.png
 ```
 
-El SVG original debe conservarse intacto. La versión web debe copiarse, optimizarse y probarse en tamaños pequeños. El favicon debe usar un fondo oscuro con el símbolo blanco para mantener contraste en pestañas claras y oscuras.
+El favicon y el símbolo compacto deben conservar el contraste en las interfaces claras y oscuras del navegador.
 
 ## Propuesta de valor
 
@@ -141,10 +138,14 @@ Debe priorizar información accionable:
 4. Teléfonos móvil y fijo.
 5. Dirección y Maps.
 6. Horarios.
-7. Servicios.
-8. Productos.
+7. Servicios desde `src/content/business.ts`.
+8. Productos desde `src/content/business.ts`.
 
 Debe funcionar correctamente desde un teléfono y cargar rápido incluso con conexión limitada.
+
+### `/muelles` — Página de servicio
+
+Debe explicar el servicio de muelles, trabajos relacionados, preguntas frecuentes y contacto directo usando datos comerciales centralizados.
 
 ## Reglas de contenido
 

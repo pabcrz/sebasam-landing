@@ -6,8 +6,9 @@ Sitio público de SEBASAM para presentar el taller, explicar sus servicios y fac
 
 | Ruta | Propósito |
 |---|---|
-| `sebasam.online/` | Landing comercial principal. |
-| `sebasam.online/info` | Tarjeta informativa para compartir mediante QR. |
+| `/` | Landing comercial principal con servicios, unidades, refacciones, ubicación, horarios y contacto. |
+| `/info` | Tarjeta pública ligera para compartir mediante QR; incluye contacto, dirección, horarios, servicios y productos desde el contenido centralizado. |
+| `/muelles` | Página de servicio enfocada en trabajos de muelles, refacciones relacionadas, preguntas frecuentes y contacto. |
 
 La aplicación operativa de cotizaciones, pagos y administración vive en otro proyecto y no forma parte de este repositorio.
 
@@ -38,7 +39,7 @@ El servidor inicia en `http://localhost:4321`.
 
 ## Estructura
 
-Las páginas y componentes Astro reutilizan los datos comerciales centralizados en `src/content/business.ts`. La estructura prevista está descrita en [`docs/architecture.md`](docs/architecture.md).
+Las páginas y componentes Astro reutilizan los datos comerciales centralizados en `src/content/business.ts`. La estructura actual incluye `/`, `/info` y `/muelles`, con layout, header, footer, acciones de contacto y horarios compartidos; está descrita en [`docs/architecture.md`](docs/architecture.md).
 
 ## Documentación
 

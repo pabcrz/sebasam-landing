@@ -149,13 +149,6 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
       </div>
     </section>
 
-    <section class="section section--compact">
-      <div class="container story surface">
-        <p class="eyebrow">Origen del nombre</p>
-        <p>{business.origin}</p>
-      </div>
-    </section>
-
     <section id="contacto" class="section contact-section">
       <div class="container contact-layout">
         <div>
@@ -296,8 +289,7 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
     letter-spacing: -0.07em;
   }
 
-  .trust p:not(.eyebrow),
-  .story p:not(.eyebrow) {
+  .trust p:not(.eyebrow) {
     margin: 0;
     color: var(--color-slate-600);
     font-size: 1.08rem;
@@ -446,10 +438,6 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
     color: var(--color-navy-900);
     font-size: clamp(1rem, 2.4vw, 1.25rem);
     font-weight: 800;
-  }
-
-  .story {
-    padding: clamp(1.25rem, 4vw, 2rem);
   }
 
   .contact-section {
