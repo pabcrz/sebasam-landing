@@ -17,7 +17,8 @@ src/
 │   └── BaseLayout.astro
 ├── pages/
 │   ├── index.astro
-│   └── info.astro
+│   ├── info.astro
+│   └── muelles.astro
 └── styles/
     ├── global.css
     └── tokens.css
@@ -27,7 +28,7 @@ Reglas:
 
 - `business.ts` es la única fuente para datos comerciales compartidos.
 - `BaseLayout.astro` centraliza idioma, metadata, favicons, canonical y estructura base.
-- `/` y `/info` reutilizan acciones de contacto, horarios y footer; no duplican teléfonos, dirección ni enlaces.
+- `/`, `/info` y `/muelles` reutilizan datos centralizados y componentes compartidos; no duplican teléfonos, dirección, horarios ni enlaces.
 - La salida es HTML estático por defecto. Agregar JavaScript cliente únicamente cuando una interacción no pueda resolverse con HTML y CSS.
 - La landing no consulta Supabase ni depende de la aplicación operativa en v1.
 
@@ -46,14 +47,13 @@ Se puede recrear con CSS nativo un efecto inspirado en Magic UI Border Beam, sin
 
 ## Fotografía y hero
 
-### V1
+### Versión actual
 
-- Usar una fotografía real potente del taller, una unidad o un trabajo.
-- Aplicar overlay para garantizar legibilidad.
-- Permitir movimiento CSS sutil, como zoom lento o desplazamiento controlado.
-- Mantener una versión estática para usuarios con movimiento reducido.
+- No usar fotografías de stock o generadas como evidencia de trabajos reales.
+- La implementación actual usa PNG de marca y superficies CSS; no incorpora fotografías del taller.
+- La selección de fotografías queda para una etapa futura. Usar imágenes reales del taller, unidades, trabajos o refacciones, optimizadas para web responsiva, con dimensiones explícitas y texto alternativo útil.
 
-### V2
+### Exploración futura
 
 Explorar una transición visual: `Camión completo → vista trasera → chasis descubierto → acercamiento a ejes y suspensión`. Para funcionar profesionalmente, las imágenes deben conservar cámara, perspectiva, escala e iluminación. La implementación puede usar una secuencia controlada por scroll, crossfades o máscaras.
 
@@ -80,19 +80,26 @@ No implementar esta transición en la primera versión si compromete rendimiento
 
 Agregar JSON-LD de Schema.org con un tipo compatible con taller automotriz, preferentemente `AutoRepair`, usando los mismos datos de `business.ts`: nombre y descriptor, teléfonos, dirección postal, horarios, URL canónica y enlace de Google Maps. No publicar precios, inventario, calificaciones ni áreas de servicio no confirmadas.
 
-## Activos necesarios
+## Activos actuales
 
-Antes de publicar v1 deben existir activos web optimizados:
+El repositorio actualmente incluye estos recursos PNG e ICO; no se requieren archivos SVG para el sitio actual:
 
-- [ ] Logo completo en SVG.
-- [ ] Símbolo compacto en SVG.
-- [ ] Favicon de alto contraste.
-- [ ] Apple touch icon.
-- [ ] Fotografía horizontal real para el hero.
-- [ ] Fotografías reales de trabajos, unidades o refacciones.
-- [ ] Imagen Open Graph de `1200 × 630` px.
+```text
+public/
+├── apple-touch-icon.png
+├── favicon-32x32.png
+├── favicon-48x48.png
+├── favicon.ico
+└── brand/
+    ├── sebasam-logo-dark.png
+    ├── sebasam-logo-light.png
+    ├── sebasam-mark-192.png
+    ├── sebasam-mark-512.png
+    ├── sebasam-mark-dark.png
+    └── sebasam-mark-light.png
+```
 
-Cada imagen debe tener una versión responsiva, dimensiones explícitas y texto alternativo cuando aporte información. Las imágenes decorativas deben usar `alt=""`.
+No es necesario crear SVG para el sitio actual. La selección de fotografías queda para un cambio futuro; deberán ser reales, optimizadas, contar con dimensiones explícitas y texto alternativo adecuado cuando transmitan información.
 
 ## Verificación automatizada
 
@@ -103,19 +110,19 @@ pnpm astro check
 pnpm build
 ```
 
-Las pruebas o verificaciones de contenido deben confirmar que `/` y `/info` se generan en el build estático, ambas rutas consumen `business.ts`, WhatsApp, teléfonos y Maps usan enlaces válidos, la metadata y canonical son distintas por ruta, y no existen dependencias de Supabase, CMS o APIs en v1.
+Las pruebas o verificaciones de contenido deben confirmar que `/`, `/info` y `/muelles` se generan en el build estático, las rutas consumen `business.ts`, WhatsApp, teléfonos y Maps usan enlaces válidos, la metadata y canonical son distintas por ruta, y no existen dependencias de Supabase, CMS o APIs en v1.
 
 ## Alcance de v1
 
 ### Incluido
 
-- Landing `/` y tarjeta pública `/info`.
+- Landing `/`, tarjeta pública `/info` y página de servicio `/muelles`.
 - Contenido centralizado.
 - Logo y favicon.
 - Contacto por WhatsApp y teléfono.
 - Dirección, Maps y horarios.
 - Servicios, productos y unidades atendidas.
-- Fotografías reales.
+- Activos PNG de marca y favicon existentes; selección futura de fotografías reales fuera de este cambio.
 - SEO y accesibilidad base.
 - Despliegue en Vercel.
 
@@ -150,8 +157,8 @@ Las pruebas o verificaciones de contenido deben confirmar que `/` y `/info` se g
 - [ ] Ambos teléfonos pueden marcarse desde móvil.
 - [ ] Google Maps abre la ubicación correcta.
 - [ ] Horarios, servicios y productos coinciden con [`docs/content-brief.md`](content-brief.md).
-- [ ] `/` y `/info` funcionan en móvil y desktop.
-- [ ] Las fotografías publicadas son reales o están claramente tratadas como ilustración.
+- [ ] `/`, `/info` y `/muelles` funcionan en móvil y desktop.
+- [ ] Las fotografías futuras publicadas son reales o están claramente tratadas como ilustración.
 - [ ] Las animaciones respetan `prefers-reduced-motion`.
 - [ ] `pnpm astro check` pasa.
 - [ ] `pnpm build` pasa.
