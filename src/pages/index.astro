@@ -37,8 +37,7 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
       <div class="hero__inner container">
         <div class="hero__copy">
           <div class="">
-            <p class="eyebrow">{business.descriptor}</p>
-            <h1 class="hero-title">
+            <div class="hero-logo">
               <img
                 src="/brand/sebasam-logo-light-680.png"
                 srcset="/brand/sebasam-logo-light-192.png 192w, /brand/sebasam-logo-light-680.png 680w"
@@ -47,9 +46,13 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
                 width="520"
                 height="220"
               />
-            </h1>
+            </div>
           </div>
-          <p class="hero-line">{business.mainMessage}</p>
+          <div class="hero__value">
+            <h1 class="hero-title">{business.descriptor}</h1>
+            <p class="hero-line">{business.mainMessage}</p>
+            <ContactActions />
+          </div>
         </div>
       </div>
       <section class="section section--compact">
@@ -60,7 +63,6 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
           </div>
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <p>{business.trustExplanation}</p>
-            <ContactActions />
           </div>
         </div>
       </section>
@@ -191,13 +193,22 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
     gap: clamp(1.25rem, 5vw, 3rem);
   }
 
-  .hero-title {
-    margin: 0;
+  .hero__value {
+    display: grid;
+    gap: 1.25rem;
   }
 
-  .hero-title img {
+  .hero-title {
+    margin: 0;
+    color: var(--color-navy-900);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-logo img {
     display: block;
-    width: min(100%, 680px);
+    width: min(100%, 260px);
     height: auto;
     filter: drop-shadow(0 22px 42px rgba(0, 43, 104, 0.12));
   }
@@ -205,7 +216,7 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
   .hero-line {
     margin: 0;
     color: var(--color-navy-900);
-    font-size: clamp(1.45rem, 5vw, 3.2rem);
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.06em;
@@ -331,20 +342,15 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
 
   .service-rail {
     display: grid;
-    grid-auto-columns: minmax(210px, 76vw);
-    grid-auto-flow: column;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     margin-top: 2rem;
-    overflow-x: auto;
     padding-block: 0.25rem 1rem;
-    scroll-snap-type: x proximity;
-    scrollbar-width: thin;
   }
 
   .service-card {
     min-height: 132px;
     padding: 1rem;
-    scroll-snap-align: start;
   }
 
   .service-card span {
@@ -493,15 +499,10 @@ const vehicleCategories = business.vehicles.map((vehicle, index) => ({
       column-gap: clamp(2rem, 6vw, 5rem);
     }
 
-    .hero-title img {
+    .hero-logo img {
       width: min(100%, 560px);
     }
 
-    .hero-line {
-      font-size: clamp(2.35rem, 4.6vw, 4.6rem);
-    }
-
-    .hero__inner,
     .trust,
     .split-heading,
     .units-layout,

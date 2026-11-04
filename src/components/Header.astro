@@ -10,7 +10,7 @@ import { business, navigation } from '../content/business';
     </a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-controls="site-navigation" />
     <label for="nav-toggle" class="nav-toggle-label">
-      <span class="sr-only">Abrir menú de navegación</span>
+      <span class="sr-only">Menú de navegación</span>
       <span class="nav-toggle-label__bar" aria-hidden="true"></span>
       <span class="nav-toggle-label__bar" aria-hidden="true"></span>
       <span class="nav-toggle-label__bar" aria-hidden="true"></span>
@@ -130,6 +130,11 @@ import { business, navigation } from '../content/business';
     gap: 5px;
     border-radius: 12px;
     cursor: pointer;
+  }
+
+  .nav-toggle:focus-visible + .nav-toggle-label {
+    outline: 3px solid var(--color-blue-600);
+    outline-offset: 4px;
   }
 
   .nav-toggle-label__bar {
