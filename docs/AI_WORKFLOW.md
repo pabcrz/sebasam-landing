@@ -1,101 +1,101 @@
-# AI Workflow for SEBASAM Landing
+# Flujo de trabajo con IA para la landing de SEBASAM
 
-This is the canonical workflow for AI assistants working in this public Astro repository. Tool-specific instruction files must point here instead of duplicating or weakening these rules.
+Este es el flujo de trabajo canónico para asistentes de IA en este repositorio público de Astro. Los archivos de instrucciones específicos de cada herramienta deben remitir aquí, sin duplicar ni debilitar estas reglas.
 
-## Quick Path
+## Ruta rápida
 
-1. Read the issue, confirm it has `status:approved`, and identify its acceptance criteria.
-2. Follow [`docs/GITFLOW.md`](GITFLOW.md) and work on one issue-backed branch.
-3. Inspect the current worktree before editing and preserve unrelated user changes.
-4. Implement the smallest complete solution within the approved scope.
-5. Verify content, accessibility, SEO, Astro checks, and the static production build as applicable.
-6. Hand off with changed files, exact verification results, and remaining risks.
+1. Lee el issue, confirma que tenga `status:approved` e identifica sus criterios de aceptación.
+2. Sigue [`docs/GITFLOW.md`](GITFLOW.md) y trabaja en una rama respaldada por un issue.
+3. Inspecciona el árbol de trabajo antes de editar y conserva los cambios ajenos del usuario.
+4. Implementa la solución completa más pequeña dentro del alcance aprobado.
+5. Verifica contenido, accesibilidad, SEO, comprobaciones de Astro y compilación estática de producción, según corresponda.
+6. Entrega la lista de archivos modificados, los resultados exactos de verificación y los riesgos pendientes.
 
-## Issue, Branch, and PR Rules
+## Reglas para issues, ramas y PR
 
-| Topic | Rule |
+| Tema | Regla |
 |---|---|
-| Issue first | Implementation starts only from a GitHub issue labeled `status:approved`. New ideas or discovered follow-up work require a separate issue. |
-| Scope | One branch and one PR cover one approved issue or one explicitly agreed review slice. Do not bundle unrelated cleanup. |
-| Base branch | Feature, fix, docs, and maintenance branches start from `develop`. Release and hotfix branches follow `docs/GITFLOW.md`. |
-| Branch name | Include the issue number, for example `feature/14-contact-actions`, `fix/27-canonical-url`, or `docs/31-content-guide`. |
-| Issue linkage | Every PR includes `Closes #<number>` for its approved issue. |
-| PR label | Every PR has exactly one `type:*` label matching the primary change. |
-| Commits | Use atomic Conventional Commits. Keep code, checks, and documentation together when they form one deliverable. |
+| Issue primero | La implementación inicia únicamente a partir de un issue de GitHub con la etiqueta `status:approved`. Las ideas nuevas o el trabajo de seguimiento descubierto requieren un issue separado. |
+| Alcance | Una rama y un PR cubren un issue aprobado o una sección de revisión acordada explícitamente. No incluyas limpieza ajena al alcance. |
+| Rama base | Las ramas de funcionalidades, correcciones, documentación y mantenimiento parten de `develop`. Las ramas de release y hotfix siguen `docs/GITFLOW.md`. |
+| Nombre de rama | Incluye el número del issue; por ejemplo, `feature/14-contact-actions`, `fix/27-canonical-url` o `docs/31-content-guide`. |
+| Vinculación del issue | Cada PR incluye `Closes #<number>` para su issue aprobado. |
+| Etiqueta del PR | Cada PR tiene exactamente una etiqueta `type:*` que corresponde al cambio principal. |
+| Commits | Usa Conventional Commits atómicos. Mantén juntos el código, las comprobaciones y la documentación cuando formen una sola entrega. |
 
-## Label Taxonomy
+## Clasificación de etiquetas
 
-| Label | Use |
+| Etiqueta | Uso |
 |---|---|
-| `status:needs-review` | Applied automatically to new bug and feature issues awaiting triage. |
-| `status:approved` | Applied by a maintainer when an issue is ready for implementation. |
-| `bug` | Applied automatically by the bug report form. |
-| `enhancement` | Applied automatically by the feature request form. |
-| `type:bug` | PR primarily fixes a defect. |
-| `type:feature` | PR primarily adds or improves user-facing behavior. |
-| `type:docs` | PR changes documentation only. |
-| `type:refactor` | PR restructures code without intended behavior changes. |
-| `type:chore` | PR primarily changes maintenance, tooling, or build configuration. |
-| `type:breaking-change` | PR intentionally introduces an incompatible change. |
+| `status:needs-review` | Se aplica automáticamente a los nuevos issues de errores y funcionalidades pendientes de evaluación. |
+| `status:approved` | La aplica una persona responsable del mantenimiento cuando el issue está listo para implementarse. |
+| `bug` | La aplica automáticamente el formulario de reporte de errores. |
+| `enhancement` | La aplica automáticamente el formulario de solicitud de funcionalidades. |
+| `type:bug` | El PR corrige principalmente un defecto. |
+| `type:feature` | El PR agrega o mejora principalmente un comportamiento visible para el usuario. |
+| `type:docs` | El PR modifica únicamente documentación. |
+| `type:refactor` | El PR reorganiza código sin cambios de comportamiento previstos. |
+| `type:chore` | El PR modifica principalmente mantenimiento, herramientas o configuración de compilación. |
+| `type:breaking-change` | El PR introduce intencionalmente un cambio incompatible. |
 
-Issue forms can apply labels only after those labels exist in the GitHub repository. Maintainers own label creation and apply `status:approved`; contributors select exactly one `type:*` label for each PR.
+Los formularios de issues solo pueden aplicar etiquetas que ya existan en el repositorio de GitHub. Las personas responsables del mantenimiento crean las etiquetas y aplican `status:approved`; quienes contribuyen seleccionan exactamente una etiqueta `type:*` para cada PR.
 
-## Public Repository Safety
+## Seguridad del repositorio público
 
-- Never commit secrets, credentials, tokens, private keys, `.env` files, private customer data, or internal-only operational data.
-- Never commit personal machine paths, editor-specific personal settings, or local service URLs as repository instructions.
-- Use placeholders in examples and review diffs for accidental sensitive data before handoff.
-- Do not expose unpublished business claims, prices, inventory, ratings, service areas, or customer information.
+- Nunca incluyas en commits secretos, credenciales, tokens, llaves privadas, archivos `.env`, datos privados de clientes ni datos operativos de uso exclusivamente interno.
+- Nunca incluyas rutas personales de equipos, ajustes personales de editores ni URL de servicios locales como instrucciones del repositorio.
+- Usa marcadores de posición en los ejemplos y revisa las diferencias antes de la entrega para detectar datos sensibles incluidos por accidente.
+- No expongas afirmaciones comerciales sin publicar, precios, inventario, calificaciones, zonas de servicio ni información de clientes.
 
-## Architecture Boundaries
+## Límites de arquitectura
 
-| Topic | Rule |
+| Tema | Regla |
 |---|---|
-| Rendering | Prefer Astro components and static HTML. Add client-side JavaScript only when the requirement cannot be met with HTML and CSS. |
-| Styling | Use native CSS, shared design tokens, and scoped component styles where appropriate. Do not add Tailwind. |
-| UI frameworks | Do not add React or another client framework without an explicitly approved issue and documented need. |
-| Data sources | The first release has no CMS, database, Supabase dependency, or runtime API. Do not add one without an explicitly approved issue. |
-| Dependencies | Prefer platform and Astro capabilities. Add a package only when the approved requirement justifies its maintenance and client-performance cost. |
-| Output | Keep the site compatible with Astro's static output unless an approved issue changes the deployment architecture. |
+| Renderizado | Prefiere componentes de Astro y HTML estático. Agrega JavaScript del lado del cliente solo cuando el requisito no pueda resolverse con HTML y CSS. |
+| Estilos | Usa CSS nativo, tokens de diseño compartidos y estilos con alcance por componente cuando corresponda. No agregues Tailwind. |
+| Frameworks de interfaz | No agregues React ni otro framework del cliente sin un issue aprobado explícitamente y una necesidad documentada. |
+| Fuentes de datos | La primera versión no tiene CMS, base de datos, dependencia de Supabase ni API en tiempo de ejecución. No agregues ninguno sin un issue aprobado explícitamente. |
+| Dependencias | Prefiere las capacidades de la plataforma y de Astro. Agrega un paquete solo cuando el requisito aprobado justifique su costo de mantenimiento y de rendimiento en el cliente. |
+| Salida | Mantén la compatibilidad del sitio con la salida estática de Astro, salvo que un issue aprobado cambie la arquitectura de despliegue. |
 
-## Content Source Discipline
+## Disciplina de fuentes de contenido
 
-- Treat [`docs/content-brief.md`](content-brief.md) as the product and content brief.
-- Centralize confirmed shared business data in `src/content/business.ts` when implementation begins.
-- Pages and components must consume shared business data rather than duplicating phone numbers, addresses, hours, services, products, or map links.
-- Keep route-specific metadata distinct while deriving common organization details from the same confirmed source.
-- Do not invent or infer business facts. Flag missing or conflicting content for maintainer confirmation.
-- Keep public-facing copy in the language established by [`docs/content-brief.md`](content-brief.md); keep technical documentation in clear professional English unless the target document uses another language.
+- Usa [`docs/content-brief.md`](content-brief.md) como documento de referencia del producto y del contenido.
+- Centraliza los datos compartidos y confirmados del negocio en `src/content/business.ts`.
+- Las páginas y los componentes deben consumir los datos compartidos del negocio, en lugar de duplicar teléfonos, direcciones, horarios, servicios, productos o enlaces de mapas.
+- Mantén los metadatos específicos de cada ruta separados y deriva los datos comunes de la organización de la misma fuente confirmada.
+- No inventes ni infieras datos del negocio. Señala el contenido faltante o contradictorio para que lo confirme una persona responsable del mantenimiento.
+- Usa español profesional de México (es-MX), sin voseo, tanto en el contenido público como en toda la documentación del repositorio, conforme a [`docs/content-brief.md`](content-brief.md). Conserva comandos, identificadores, nombres de archivo, URL, etiquetas y convenciones técnicas cuando su traducción altere su validez.
 
-## Accessibility and SEO
+## Accesibilidad y SEO
 
-- Use semantic HTML and preserve a logical heading structure.
-- Ensure complete keyboard access, visible focus states, sufficient contrast, and touch targets of at least 44 CSS pixels.
-- Provide useful alternative text for informative images and `alt=""` for decorative images.
-- Respect `prefers-reduced-motion` and avoid motion that blocks comprehension or interaction.
-- Keep every public route usable without client-side JavaScript unless an approved requirement says otherwise.
-- Provide unique titles, descriptions, and canonical URLs per route.
-- Keep Open Graph data, local-business structured data, contact details, sitemap, and `robots.txt` consistent with confirmed content.
-- Do not publish unverified structured-data claims.
+- Usa HTML semántico y conserva una estructura lógica de encabezados.
+- Asegura acceso completo con teclado, estados de foco visibles, contraste suficiente y objetivos táctiles de al menos 44 píxeles CSS.
+- Proporciona texto alternativo útil para imágenes informativas y `alt=""` para imágenes decorativas.
+- Respeta `prefers-reduced-motion` y evita movimiento que impida comprender o utilizar la interfaz.
+- Mantén todas las rutas públicas utilizables sin JavaScript del lado del cliente, salvo que un requisito aprobado indique lo contrario.
+- Proporciona títulos, descripciones y URL canónicas únicos por ruta.
+- Mantén los datos de Open Graph, los datos estructurados del negocio local, los datos de contacto, el sitemap y `robots.txt` alineados con el contenido confirmado.
+- No publiques afirmaciones sin verificar en los datos estructurados.
 
-## Checks Before Handoff
+## Comprobaciones antes de la entrega
 
-Run checks appropriate to the change, with these commands as the minimum implementation baseline:
+Ejecuta las comprobaciones adecuadas al cambio, con estos comandos como base mínima de implementación:
 
 ```bash
 pnpm astro check
 pnpm build
 ```
 
-Also review changed Markdown links, YAML syntax, generated routes, metadata, keyboard behavior, responsive layouts, and content consistency when affected.
+Revisa también los enlaces Markdown modificados, la sintaxis YAML, las rutas generadas, los metadatos, el comportamiento con teclado, los diseños adaptables y la coherencia del contenido cuando se vean afectados.
 
-If `pnpm astro check` requests an optional package that is not installed, report that limitation. Do not add dependencies unless the issue clearly requires them or the maintainer approves the change.
+Si `pnpm astro check` solicita un paquete opcional que no está instalado, informa esa limitación. No agregues dependencias salvo que el issue las requiera claramente o lo apruebe una persona responsable del mantenimiento.
 
-Record the exact command and result for every check. If a check is skipped or blocked, state why and describe the remaining risk.
+Registra el comando exacto y el resultado de cada comprobación. Si se omite o bloquea una comprobación, explica el motivo y describe el riesgo pendiente.
 
-## References
+## Referencias
 
-- [`docs/GITFLOW.md`](GITFLOW.md): branch, PR, release, and hotfix flow.
-- [`docs/content-brief.md`](content-brief.md): confirmed product and content brief.
-- [`docs/architecture.md`](architecture.md): implementation, design, accessibility, SEO, assets, scope, roadmap, and verification expectations.
-- [`.github/PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md): required PR evidence and checklist.
+- [`docs/GITFLOW.md`](GITFLOW.md): flujo de ramas, PR, releases y hotfixes.
+- [`docs/content-brief.md`](content-brief.md): documento de referencia confirmado del producto y del contenido.
+- [`docs/architecture.md`](architecture.md): expectativas de implementación, diseño, accesibilidad, SEO, recursos, alcance, hoja de ruta y verificación.
+- [`.github/PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md): evidencia y lista de verificación requeridas para los PR.

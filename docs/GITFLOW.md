@@ -1,53 +1,53 @@
-# Gitflow Workflow
+# Flujo de trabajo Gitflow
 
-This repository uses a pragmatic Gitflow model. `main` represents production, while `develop` is the integration branch for planned landing-site work.
+Este repositorio usa un modelo Gitflow práctico. `main` representa producción y `develop` es la rama de integración para el trabajo planeado del sitio.
 
-## Quick Path
+## Ruta rápida
 
-1. Start with a GitHub issue labeled `status:approved`.
-2. Branch from `develop` using the issue number and a short description.
-3. Implement one reviewable issue scope and run the required checks.
-4. Open a PR to `develop` with `Closes #N` and exactly one `type:*` label.
-5. Promote a tested release from `develop` to `main` through a release PR.
+1. Comienza con un issue de GitHub que tenga la etiqueta `status:approved`.
+2. Crea una rama desde `develop` con el número del issue y una descripción breve.
+3. Implementa el alcance de un issue que pueda revisarse y ejecuta las comprobaciones requeridas.
+4. Abre un PR hacia `develop` con `Closes #N` y exactamente una etiqueta `type:*`.
+5. Promueve una versión probada de `develop` a `main` mediante un PR de release.
 
-## Branch Rules
+## Reglas de ramas
 
-| Branch | Purpose | Source and destination |
+| Rama | Propósito | Origen y destino |
 |---|---|---|
-| `main` | Production-ready site | Protected from direct commits; receives release and hotfix PRs. |
-| `develop` | Integration for approved work | Receives feature, fix, docs, and maintenance PRs. |
-| `feature/<issue>-short-name` | User-facing capability | Branch from `develop`; PR back to `develop`. |
-| `fix/<issue>-short-name` | Non-production defect | Branch from `develop`; PR back to `develop`. |
-| `docs/<issue>-short-name` | Documentation-only work | Branch from `develop`; PR back to `develop`. |
-| `chore/<issue>-short-name` | Tooling or repository maintenance | Branch from `develop`; PR back to `develop`. |
-| `release/<version-or-date>` | Production release preparation | Branch from `develop`; PR to `main`, then merge release-only fixes back to `develop`. |
-| `hotfix/<issue>-short-name` | Urgent production correction | Branch from `main`; PR to `main`, then merge the fix back to `develop`. |
+| `main` | Sitio listo para producción | Protegida contra commits directos; recibe PR de release y hotfix. |
+| `develop` | Integración del trabajo aprobado | Recibe PR de funcionalidades, correcciones, documentación y mantenimiento. |
+| `feature/<issue>-short-name` | Funcionalidad visible para el usuario | Parte de `develop`; el PR regresa a `develop`. |
+| `fix/<issue>-short-name` | Defecto fuera de producción | Parte de `develop`; el PR regresa a `develop`. |
+| `docs/<issue>-short-name` | Trabajo exclusivo de documentación | Parte de `develop`; el PR regresa a `develop`. |
+| `chore/<issue>-short-name` | Herramientas o mantenimiento del repositorio | Parte de `develop`; el PR regresa a `develop`. |
+| `release/<version-or-date>` | Preparación de una versión para producción | Parte de `develop`; el PR va a `main`; después se integran en `develop` las correcciones exclusivas del release. |
+| `hotfix/<issue>-short-name` | Corrección urgente en producción | Parte de `main`; el PR va a `main`; después se integra la corrección en `develop`. |
 
-Use lowercase names with hyphens, for example `feature/14-contact-actions` or `fix/27-canonical-url`.
+Usa nombres en minúsculas separados por guiones; por ejemplo, `feature/14-contact-actions` o `fix/27-canonical-url`.
 
-## Pull Request Rules
+## Reglas de pull requests
 
-- Do not commit directly to `main`.
-- Use PRs for changes entering `develop` or `main`.
-- Keep each branch and PR limited to one approved issue or one explicitly agreed review slice.
-- Include `Closes #N` in the PR description.
-- Apply exactly one `type:*` label.
-- Use Conventional Commits such as `feat(contact): add WhatsApp action` or `docs(workflow): define release flow`.
-- Keep implementation, verification, and related documentation in the same work unit.
-- Never include secrets, `.env` files, private data, or personal machine paths in this public repository.
+- No hagas commits directamente en `main`.
+- Usa PR para incorporar cambios a `develop` o `main`.
+- Limita cada rama y PR a un issue aprobado o una sección de revisión acordada explícitamente.
+- Incluye `Closes #N` en la descripción del PR.
+- Aplica exactamente una etiqueta `type:*`.
+- Usa Conventional Commits, como `feat(contact): add WhatsApp action` o `docs(workflow): define release flow`.
+- Mantén la implementación, la verificación y la documentación relacionada en la misma unidad de trabajo.
+- Nunca incluyas secretos, archivos `.env`, datos privados ni rutas personales de equipos en este repositorio público.
 
-## Release Flow
+## Flujo de release
 
-1. Confirm the intended changes are integrated and verified on `develop`.
-2. Create `release/<version-or-date>` from `develop`.
-3. Limit release-branch changes to release blockers, metadata, and deployment preparation.
-4. Run `pnpm astro check` and `pnpm build`.
-5. Open a release PR to `main` and deploy only after review and passing checks.
-6. Merge any release-only corrections back into `develop`.
+1. Confirma que los cambios previstos estén integrados y verificados en `develop`.
+2. Crea `release/<version-or-date>` desde `develop`.
+3. Limita los cambios de la rama de release a bloqueos para la publicación, metadatos y preparación del despliegue.
+4. Ejecuta `pnpm astro check` y `pnpm build`.
+5. Abre un PR de release hacia `main` y despliega únicamente después de la revisión y de que pasen las comprobaciones. La integración y la publicación requieren la decisión de la persona responsable del repositorio.
+6. Integra en `develop` las correcciones exclusivas del release.
 
-## Hotfix Flow
+## Flujo de hotfix
 
-1. Create `hotfix/<issue>-short-name` from `main` for an approved urgent production issue.
-2. Make the smallest safe correction and run the required checks.
-3. Open a PR to `main`.
-4. After merge, bring the same correction back into `develop` to prevent regression.
+1. Crea `hotfix/<issue>-short-name` desde `main` para un issue urgente de producción aprobado.
+2. Realiza la corrección segura más pequeña y ejecuta las comprobaciones requeridas.
+3. Abre un PR hacia `main`.
+4. Después de su integración, incorpora la misma corrección en `develop` para evitar una regresión.
