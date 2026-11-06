@@ -1,5 +1,5 @@
-name: Feature request
-description: Propose an improvement to the public SEBASAM landing site or its maintenance workflow.
+name: Solicitud de funcionalidad
+description: Propón una mejora al sitio público de SEBASAM o a su flujo de mantenimiento.
 title: "feat: "
 labels:
   - enhancement
@@ -8,72 +8,72 @@ body:
   - type: markdown
     attributes:
       value: |
-        Describe the visitor or maintainer problem before proposing implementation. A maintainer must add `status:approved` before work begins.
+        Describe el problema de visitantes o responsables del mantenimiento antes de proponer una implementación. Una persona responsable del mantenimiento debe agregar `status:approved` antes de iniciar el trabajo.
 
   - type: checkboxes
     id: preflight
     attributes:
-      label: Pre-flight checks
+      label: Comprobaciones previas
       options:
-        - label: I searched existing issues and did not find a duplicate.
+        - label: Busqué en los issues existentes y no encontré un duplicado.
           required: true
-        - label: This request does not include secrets, private customer data, or unverified business claims.
+        - label: Esta solicitud no incluye secretos, datos privados de clientes ni afirmaciones comerciales sin verificar.
           required: true
-        - label: I understand this issue must be approved before a pull request is opened.
+        - label: Entiendo que este issue debe aprobarse antes de abrir un pull request.
           required: true
 
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What visitor or maintainer need is not being met?
-      placeholder: Visitors cannot easily...
+      label: Problema
+      description: ¿Qué necesidad de visitantes o responsables del mantenimiento no se está atendiendo?
+      placeholder: Los visitantes no pueden fácilmente...
     validations:
       required: true
 
   - type: textarea
     id: outcome
     attributes:
-      label: Desired outcome
-      description: Describe the observable result, not only a preferred technology.
-      placeholder: Visitors should be able to...
+      label: Resultado deseado
+      description: Describe el resultado observable, no solo una tecnología preferida.
+      placeholder: Los visitantes deberían poder...
     validations:
       required: true
 
   - type: textarea
     id: solution
     attributes:
-      label: Proposed solution
-      description: Explain how the experience could work while preserving Astro's static-first architecture.
+      label: Solución propuesta
+      description: Explica cómo podría funcionar la experiencia sin alterar la arquitectura de Astro con prioridad estática.
 
   - type: dropdown
     id: area
     attributes:
-      label: Affected area
+      label: Área afectada
       options:
-        - Content and business information
-        - Astro pages and components
-        - Native CSS and visual design
-        - Accessibility
-        - SEO and structured data
-        - Performance and assets
-        - Build, deployment, or tooling
-        - Documentation and collaboration workflow
-        - Other
+        - Contenido e información del negocio
+        - Páginas y componentes de Astro
+        - CSS nativo y diseño visual
+        - Accesibilidad
+        - SEO y datos estructurados
+        - Rendimiento y recursos
+        - Compilación, despliegue o herramientas
+        - Documentación y flujo de colaboración
+        - Otra
     validations:
       required: true
 
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives considered
-      description: Describe current workarounds or simpler approaches considered.
+      label: Alternativas consideradas
+      description: Describe las soluciones temporales actuales o los enfoques más sencillos que consideraste.
 
   - type: textarea
     id: acceptance
     attributes:
-      label: Suggested acceptance criteria
-      description: List objective outcomes that would make this request complete and verifiable.
+      label: Criterios de aceptación sugeridos
+      description: Enumera los resultados objetivos necesarios para completar y verificar esta solicitud.
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -81,5 +81,5 @@ body:
   - type: textarea
     id: context
     attributes:
-      label: Additional context
-      description: Add sanitized references, mockups, examples, or constraints.
+      label: Contexto adicional
+      description: Agrega referencias, propuestas visuales, ejemplos o restricciones sin información sensible.

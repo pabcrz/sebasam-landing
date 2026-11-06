@@ -1,4 +1,4 @@
-# Brief de producto y contenido
+# Documento de referencia del producto y del contenido
 
 Este documento concentra el contenido confirmado y las reglas de comunicación del sitio público de SEBASAM. El objetivo es convertir visitas en conversaciones reales con el taller, en este orden: WhatsApp, llamada telefónica e indicaciones para llegar.
 
@@ -13,7 +13,7 @@ SEBASAM es la marca. El descriptor explica la especialidad del taller, pero no s
 
 | Variante | Uso |
 |---|---|
-| Logo completo | Header, footer y piezas amplias. |
+| Logo completo | Encabezado, pie de página y piezas amplias. |
 | Símbolo corto | Favicon, navegación móvil, avatar social y marca compacta. |
 
 Los recursos web actuales son PNG e ICO; no hace falta crear SVG para actualizar el sitio.
@@ -93,7 +93,7 @@ El domingo no se menciona en el contenido público.
 - Tensores.
 - Balancines.
 
-Los productos no deben mostrarse como ecommerce. No publicar precios, inventario ni promesas de existencia. Usar el CTA: **Consulta disponibilidad por WhatsApp**.
+Los productos no deben mostrarse como comercio electrónico. No publicar precios, inventario ni promesas de existencia. Usar el CTA: **Consulta disponibilidad por WhatsApp**.
 
 ## Vehículos y clientes
 
@@ -113,12 +113,12 @@ Las flotillas se atienden por unidades programadas semanal, quincenal o mensualm
 
 ## Estructura de contenido
 
-### `/` — Landing principal
+### `/` — Página principal
 
 Orden inicial recomendado:
 
-1. Header con logo, navegación y CTA de WhatsApp.
-2. Hero con propuesta de valor, experiencia y contacto principal.
+1. Encabezado con logo, navegación y llamado a la acción (CTA) de WhatsApp.
+2. Sección principal con propuesta de valor, experiencia y contacto principal.
 3. Bloque de honestidad y confianza.
 4. Servicios.
 5. Tipos de unidades atendidas.
@@ -126,7 +126,7 @@ Orden inicial recomendado:
 7. Galería de trabajos reales.
 8. Ubicación, horarios y teléfonos.
 9. CTA final de WhatsApp.
-10. Footer con logo e información esencial.
+10. Pie de página con logo e información esencial.
 
 ### `/info` — Tarjeta pública para QR
 
@@ -149,7 +149,8 @@ Debe explicar el servicio de muelles, trabajos relacionados, preguntas frecuente
 
 ## Reglas de contenido
 
+- Usa español profesional de México (es-MX), sin voseo, en el contenido público y la documentación; conserva los comandos e identificadores técnicos válidos.
 - Los datos comerciales no deben repetirse manualmente entre páginas.
-- La fuente central prevista es `src/content/business.ts` y debe contener nombre, descriptor, teléfonos y enlaces, dirección y Google Maps, horarios, servicios, productos, tipos de vehículos y textos de confianza.
+- La fuente central es `src/content/business.ts` y debe contener nombre, descriptor, teléfonos y enlaces, dirección y Google Maps, horarios, servicios, productos, tipos de vehículos y textos de confianza.
 - En una versión futura puede sustituirse por una API, CMS o integración con la aplicación operativa; queda fuera de la primera versión.
 - No inventar ni publicar precios, inventario, calificaciones o áreas de servicio no confirmadas.

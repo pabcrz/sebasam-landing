@@ -100,12 +100,12 @@ export const muelles = {
     {
       question: '¿Cada cuánto conviene revisar los muelles?',
       answer:
-        'Depende del uso y la carga. En unidades de trabajo conviene revisarlos en cada servicio programado; si notás altura baja, golpes o inestabilidad, acercate antes.',
+        'Depende del uso y la carga. En unidades de trabajo conviene revisarlos en cada servicio programado; si notas altura baja, golpes o inestabilidad, acércate antes.',
     },
     {
       question: '¿Cómo pido una cotización?',
       answer:
-        'Mandá un mensaje por WhatsApp con el modelo de tu unidad y lo que necesitás. Revisamos el caso, explicamos las opciones y coordinamos la visita al taller.',
+        'Manda un mensaje por WhatsApp con el modelo de tu unidad y lo que necesitas. Revisamos el caso, explicamos las opciones y coordinamos la visita al taller.',
     },
   ],
 } as const;

@@ -1,14 +1,15 @@
-# Agent Instructions
+# Instrucciones para agentes
 
-Follow the canonical repository workflow in [`docs/AI_WORKFLOW.md`](docs/AI_WORKFLOW.md).
+Sigue el flujo de trabajo canónico del repositorio en [`docs/AI_WORKFLOW.md`](docs/AI_WORKFLOW.md).
 
-## Non-Negotiable Rules
+## Reglas obligatorias
 
-- Work from an approved GitHub issue and keep one scoped branch and PR per issue.
-- Follow the branch and release model in [`docs/GITFLOW.md`](docs/GITFLOW.md).
-- Link every PR with `Closes #N`, apply exactly one `type:*` label, and use Conventional Commits.
-- Treat this as a public repository: never add secrets, credentials, private customer data, or personal machine paths.
-- Preserve the Astro static-first architecture, TypeScript, and native CSS.
-- Do not add React, Tailwind, a CMS, a database, or API integration without an explicitly approved issue.
-- Keep shared business content centralized rather than duplicating it across pages or components.
-- Run `pnpm astro check` and `pnpm build` before handoff. Report any check that cannot run and why.
+- Trabaja a partir de un issue de GitHub aprobado y mantén una rama y un PR con alcance definido por issue.
+- Sigue el modelo de ramas y publicaciones en [`docs/GITFLOW.md`](docs/GITFLOW.md).
+- Vincula cada PR con `Closes #N`, aplica exactamente una etiqueta `type:*` y usa Conventional Commits.
+- Usa español profesional de México (es-MX), sin voseo, en la interfaz y en toda la documentación del repositorio. Conserva comandos, identificadores y convenciones técnicas válidas.
+- Trata este repositorio como público: nunca agregues secretos, credenciales, datos privados de clientes ni rutas personales de equipos.
+- Conserva la arquitectura de Astro con prioridad estática, TypeScript y CSS nativo.
+- No agregues React, Tailwind, un CMS, una base de datos ni una integración con API sin un issue aprobado explícitamente.
+- Centraliza el contenido compartido del negocio en lugar de duplicarlo entre páginas o componentes.
+- Ejecuta `pnpm astro check` y `pnpm build` antes de la entrega. Informa qué comprobaciones no se pudieron ejecutar y por qué.
