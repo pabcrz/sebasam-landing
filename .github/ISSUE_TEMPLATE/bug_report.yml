@@ -1,5 +1,5 @@
-name: Bug report
-description: Report a reproducible problem with the public SEBASAM landing site.
+name: Reporte de error
+description: Reporta un problema reproducible del sitio público de SEBASAM.
 title: "fix: "
 labels:
   - bug
@@ -8,59 +8,59 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a problem. A maintainer must add `status:approved` before implementation begins.
+        Gracias por reportar un problema. Una persona responsable del mantenimiento debe agregar `status:approved` antes de iniciar la implementación.
 
   - type: checkboxes
     id: preflight
     attributes:
-      label: Pre-flight checks
+      label: Comprobaciones previas
       options:
-        - label: I searched existing issues and did not find a duplicate.
+        - label: Busqué en los issues existentes y no encontré un duplicado.
           required: true
-        - label: I removed secrets, private customer data, and other sensitive information.
+        - label: Eliminé secretos, datos privados de clientes y otra información sensible.
           required: true
-        - label: I understand this issue must be approved before a pull request is opened.
+        - label: Entiendo que este issue debe aprobarse antes de abrir un pull request.
           required: true
 
   - type: textarea
     id: description
     attributes:
-      label: Bug description
-      description: Explain the problem and its impact on visitors or maintainers.
-      placeholder: The contact action does not open the expected destination...
+      label: Descripción del error
+      description: Explica el problema y su impacto en visitantes o responsables del mantenimiento.
+      placeholder: La acción de contacto no abre el destino esperado...
     validations:
       required: true
 
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to reproduce
-      description: Provide a minimal, numbered sequence that consistently shows the problem.
+      label: Pasos para reproducir el problema
+      description: Proporciona una secuencia mínima y numerada que muestre el problema de forma consistente.
       placeholder: |
-        1. Open ...
-        2. Select ...
-        3. Observe ...
+        1. Abre ...
+        2. Selecciona ...
+        3. Observa ...
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
+      label: Comportamiento esperado
     validations:
       required: true
 
   - type: textarea
     id: actual
     attributes:
-      label: Actual behavior
+      label: Comportamiento actual
     validations:
       required: true
 
   - type: input
     id: url
     attributes:
-      label: Affected page or URL
+      label: Página o URL afectada
       placeholder: https://sebasam.online/info
     validations:
       required: true
@@ -68,20 +68,20 @@ body:
   - type: input
     id: environment
     attributes:
-      label: Browser and device
-      description: Include browser version, operating system, and device or viewport when relevant.
-      placeholder: Safari 18 on iPhone 15, iOS 18
+      label: Navegador y dispositivo
+      description: Incluye la versión del navegador, el sistema operativo y el dispositivo o tamaño de ventana cuando sea pertinente.
+      placeholder: Safari 18 en iPhone 15, iOS 18
     validations:
       required: true
 
   - type: textarea
     id: evidence
     attributes:
-      label: Screenshots or logs
-      description: Add sanitized evidence that helps reproduce or diagnose the issue.
+      label: Capturas de pantalla o registros
+      description: Agrega evidencia sin información sensible que ayude a reproducir o diagnosticar el problema.
 
   - type: textarea
     id: context
     attributes:
-      label: Additional context
-      description: Include frequency, workarounds, regressions, or accessibility impact.
+      label: Contexto adicional
+      description: Incluye frecuencia, soluciones temporales, regresiones o impacto en la accesibilidad.

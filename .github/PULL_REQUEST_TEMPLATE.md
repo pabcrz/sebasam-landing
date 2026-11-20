@@ -1,50 +1,50 @@
-## Linked Issue
+## Issue vinculado
 
 Closes #N
 
-The linked issue must have `status:approved` before this PR is opened.
+El issue vinculado debe tener `status:approved` antes de abrir este PR.
 
-## Type
+## Tipo
 
-Check exactly one option and apply the matching `type:*` label to the PR.
+Marca exactamente una opción y aplica al PR la etiqueta `type:*` correspondiente.
 
-- [ ] `type:bug` - Bug fix
-- [ ] `type:feature` - New capability or improvement
-- [ ] `type:docs` - Documentation only
-- [ ] `type:refactor` - Internal restructuring without behavior change
-- [ ] `type:chore` - Maintenance, tooling, or build work
-- [ ] `type:breaking-change` - Breaking change
+- [ ] `type:bug` - Corrección de un error
+- [ ] `type:feature` - Funcionalidad nueva o mejora
+- [ ] `type:docs` - Solo documentación
+- [ ] `type:refactor` - Reorganización interna sin cambios de comportamiento
+- [ ] `type:chore` - Mantenimiento, herramientas o compilación
+- [ ] `type:breaking-change` - Cambio incompatible
 
-## Summary
+## Resumen
 
-- <!-- Summarize the outcome in one to three bullets. -->
+- <!-- Resume el resultado en uno a tres puntos. -->
 
-## Changes
+## Cambios
 
-| File or area | Change |
+| Archivo o área | Cambio |
 |---|---|
-| `path/to/file` | Describe the relevant change. |
+| `path/to/file` | Describe el cambio relevante. |
 
-## Test Plan
+## Plan de pruebas
 
 - [ ] `pnpm astro check`
 - [ ] `pnpm build`
-- [ ] Reviewed affected pages at mobile and desktop sizes, if applicable.
-- [ ] Verified keyboard access, focus, contrast, reduced motion, and image alternatives, if applicable.
-- [ ] Verified route metadata, canonical URLs, structured data, and public content consistency, if applicable.
+- [ ] Revisé las páginas afectadas en tamaños de móvil y escritorio, cuando corresponde.
+- [ ] Verifiqué el acceso con teclado, el foco, el contraste, el movimiento reducido y los textos alternativos de imágenes, cuando corresponde.
+- [ ] Verifiqué los metadatos por ruta, las URL canónicas, los datos estructurados y la coherencia del contenido público, cuando corresponde.
 
-Record skipped or blocked checks and their remaining risk:
+Registra las comprobaciones omitidas o bloqueadas y su riesgo pendiente:
 
-<!-- Check: reason not run; remaining risk. -->
+<!-- Comprobación: motivo por el que no se ejecutó; riesgo pendiente. -->
 
-## Contributor Checklist
+## Lista de verificación para contribuciones
 
-- [ ] I linked one approved issue with `Closes #N`.
-- [ ] I selected and applied exactly one `type:*` label.
-- [ ] This PR contains one scoped, reviewable work unit.
-- [ ] Commit messages follow Conventional Commits.
-- [ ] I preserved unrelated worktree changes and avoided out-of-scope changes.
-- [ ] I did not add secrets, `.env` files, private data, or personal machine paths.
-- [ ] Shared business content remains centralized and contains only confirmed claims.
-- [ ] I did not add React, Tailwind, a CMS, a database, or an API without explicit issue approval.
-- [ ] I updated relevant documentation when behavior or workflow changed.
+- [ ] Vinculé un issue aprobado con `Closes #N`.
+- [ ] Seleccioné y apliqué exactamente una etiqueta `type:*`.
+- [ ] Este PR contiene una unidad de trabajo con alcance definido que puede revisarse.
+- [ ] Los mensajes de commit siguen Conventional Commits.
+- [ ] Conservé los cambios ajenos del árbol de trabajo y evité cambios fuera del alcance.
+- [ ] No agregué secretos, archivos `.env`, datos privados ni rutas personales de equipos.
+- [ ] El contenido compartido del negocio sigue centralizado y contiene únicamente afirmaciones confirmadas.
+- [ ] No agregué React, Tailwind, un CMS, una base de datos ni una API sin aprobación explícita en el issue.
+- [ ] Actualicé la documentación pertinente cuando cambió el comportamiento o el flujo de trabajo.

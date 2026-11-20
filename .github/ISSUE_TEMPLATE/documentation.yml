@@ -1,5 +1,5 @@
-name: Documentation improvement
-description: Propose a focused improvement to the repository documentation.
+name: Mejora de documentación
+description: Propón una mejora con alcance definido para la documentación del repositorio.
 title: "docs: "
 labels:
   - documentation
@@ -8,54 +8,54 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form for documentation changes. Keep the proposal focused on one outcome.
+        Usa este formulario para cambios de documentación. Enfoca la propuesta en un solo resultado.
 
   - type: input
     id: summary
     attributes:
-      label: Summary
-      description: What documentation should change, and why?
-      placeholder: Simplify the README into a concise repository entry point.
+      label: Resumen
+      description: ¿Qué documentación debe cambiar y por qué?
+      placeholder: Simplificar el README como punto de entrada conciso al repositorio.
     validations:
       required: true
 
   - type: textarea
     id: current-state
     attributes:
-      label: Current state
-      description: Describe the confusing, outdated, duplicated, or missing documentation.
-      placeholder: The README mixes onboarding, product requirements, architecture, and roadmap details.
+      label: Estado actual
+      description: Describe la documentación confusa, desactualizada, duplicada o faltante.
+      placeholder: El README mezcla la introducción al proyecto, los requisitos del producto, la arquitectura y la hoja de ruta.
     validations:
       required: true
 
   - type: textarea
     id: desired-outcome
     attributes:
-      label: Desired outcome
-      description: Describe what should be true after the documentation change.
-      placeholder: The README explains what the project is, how to run it, and where detailed documentation lives.
+      label: Resultado deseado
+      description: Describe qué debe cumplirse después del cambio de documentación.
+      placeholder: El README explica qué es el proyecto, cómo ejecutarlo y dónde se encuentra la documentación detallada.
     validations:
       required: true
 
   - type: checkboxes
     id: scope
     attributes:
-      label: Scope
-      description: Confirm the intended boundaries of this documentation change.
+      label: Alcance
+      description: Confirma los límites previstos para este cambio de documentación.
       options:
-        - label: This change is documentation-only.
+        - label: Este cambio es únicamente de documentación.
           required: true
-        - label: The change will not add secrets, private data, or personal machine paths.
+        - label: El cambio no agregará secretos, datos privados ni rutas personales de equipos.
           required: true
 
   - type: textarea
     id: acceptance-criteria
     attributes:
-      label: Acceptance criteria
-      description: List the concrete conditions that will make this issue complete.
+      label: Criterios de aceptación
+      description: Enumera las condiciones concretas necesarias para completar este issue.
       placeholder: |
-        - README contains setup and verification commands.
-        - Detailed product and architecture guidance has a documented home.
-        - Links from the README resolve correctly.
+        - El README contiene comandos de instalación y verificación.
+        - Las indicaciones detalladas de producto y arquitectura tienen una ubicación documentada.
+        - Los enlaces del README se resuelven correctamente.
     validations:
       required: true

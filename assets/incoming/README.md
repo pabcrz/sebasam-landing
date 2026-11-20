@@ -1,24 +1,16 @@
-# Incoming Brand Assets
+# Recursos originales de marca
 
-This directory preserves the approved originals for issue #1. All four current
-sources are 1254 × 1254 RGB PNG raster images without transparency; no vector
-source has been provided.
+Este directorio conserva los originales aprobados para el issue #1. Las cuatro imágenes fuente actuales son PNG de mapa de bits RGB de 1254 × 1254 sin transparencia; no se ha proporcionado una fuente vectorial.
 
-| Approved original | Production asset |
+| Original aprobado | Recurso de producción |
 |---|---|
 | `logo-light.png` | `public/brand/sebasam-logo-light.png` |
 | `logo-dark.png` | `public/brand/sebasam-logo-dark.png` |
 | `light-short.png` | `public/brand/sebasam-mark-light.png` |
 | `dark-short.png` | `public/brand/sebasam-mark-dark.png` |
 
-The favicon, Apple touch icon, and 192/512 pixel app icons are downsampled from
-`dark-short.png`. They use its approved white mark and solid black background,
-with the original aspect ratio retained and safe padding around the centered
-mark. `public/favicon.ico` contains 16, 32, and 48 pixel PNG-backed entries.
+El favicon, el icono de Apple y los iconos de aplicación de 192/512 píxeles se generan reduciendo `dark-short.png`. Usan su símbolo blanco aprobado y fondo negro sólido, conservan la proporción original y dejan un margen de seguridad alrededor del símbolo centrado. `public/favicon.ico` contiene entradas de 16, 32 y 48 píxeles basadas en PNG.
 
-The final Open Graph image is pending authorized workshop photography. Do not
-add a placeholder; prepare the final 1200 × 630 image after the real photos and
-their editorial context are approved.
+La imagen final de Open Graph está pendiente de fotografías autorizadas del taller. No agregues una imagen provisional; prepara la imagen final de 1200 × 630 después de que se aprueben las fotografías reales y su contexto editorial.
 
-Do not add customer information, license plates, private documents,
-credentials, or images without publication authorization.
+No agregues información de clientes, placas vehiculares, documentos privados, credenciales ni imágenes sin autorización para publicarse.
